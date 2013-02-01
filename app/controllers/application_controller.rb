@@ -3,4 +3,5 @@ class ApplicationController < ActionController::Base
 
   #users are required to be logged everywhere
   before_filter :authenticate_user!
+
 end
