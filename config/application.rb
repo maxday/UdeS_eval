@@ -55,5 +55,20 @@ module EvalPP7P8
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Load paths and set locale
+    config.before_configuration do
+      I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+      I18n.locale = :fr
+      I18n.default_locale = :fr
+      config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+      config.i18n.locale = :fr
+      # bypasses rails bug with i18n in production\
+      I18n.reload!
+      config.i18n.reload!
+    end
+
+    config.i18n.locale = :fr
+    config.i18n.default_locale = :fr
   end
 end
