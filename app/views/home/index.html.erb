@@ -1,2 +1,4 @@
-salut
+Bonjour <%=  current_user.username %>,  <br />
+Vous êtes : <%= @role_name %>
+<hr />
 <%= link_to 'Se deconnecter', destroy_user_session_url, :method => :delete %>

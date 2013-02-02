@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   #roles for Cancan
   has_and_belongs_to_many :roles
+  belongs_to :projects
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

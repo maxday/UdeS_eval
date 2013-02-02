@@ -1,5 +1,7 @@
 EvalPP7P8::Application.routes.draw do
 
+  resources :projects
+
   resources :roles
 
   root :to => 'home#index'

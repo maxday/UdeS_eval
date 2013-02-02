@@ -9,7 +9,7 @@ class Ability
     elsif user.role? :operator
       can :manage, :all
     else
-      can :manage, :all
+      can :manage, :none
     end
   end
 end
