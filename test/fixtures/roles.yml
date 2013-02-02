@@ -1,7 +1,11 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  name: MyString
+  id: 1
+  name: Student
 
 two:
-  name: MyString
+  id: 2
+  name: Supervisor
+
+three:
+  id: 3
+  name: Administrator
