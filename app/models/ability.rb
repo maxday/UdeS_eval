@@ -5,9 +5,9 @@ class Ability
     user ||= User.new # guest user
 
     if user.role? :administrator
-      can :manage, :all
-    elsif user.role? :operator
-      can :manage, :all
+      can :manage, Project
+    elsif user.role? :supervisor
+      can [:read, :update, :create], Project
     else
       can :manage, :none
     end

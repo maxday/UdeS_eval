@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<div id="page">
+  <% if flash[:alert] %>
+      <p class="flash-error">Flash (erreur) : <%= flash[:alert].html_safe %></p>
+  <% end %>
+  <% if flash[:notice] %>
+      <p class="flash-notice">Flash (avertissement) : <%= flash[:notice].html_safe %></p>
+  <% end %>
+</div>
+
 <%= yield %>
 
 </body>
