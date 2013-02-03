@@ -38,7 +38,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert ability.cannot?(:create, Project.new(:name=>"a"))
 
     ability = Ability.new(@supervisor)
-    assert ability.cannot?(:create, Project.new(:name=>"a"))
+    assert ability.can?(:create, Project.new(:name=>"a"))
 
     ability = Ability.new(@administrator)
     assert ability.can?(:create, Project.new(:name=>"a"))

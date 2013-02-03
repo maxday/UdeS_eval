@@ -7,9 +7,10 @@ class Ability
     if user.role? :administrator
       can :manage, :none
       can :manage, Project
+      can :manage, Quarter
     elsif user.role? :supervisor
       can :manage, :none
-      can :read, Project
+      can [:read, :create], Project
     else
       can :manage, :none
       can :read, Project

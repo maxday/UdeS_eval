@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   #load roles logic
   load_and_authorize_resource
+
   # GET /projects
   # GET /projects.json
   def index
