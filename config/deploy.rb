@@ -2,7 +2,7 @@
 #	Application
 #############################################################
 
-set :application, "eval_p_S7_S8"   # was
+set :application, "eval_P_S7_S8"   # was
 set :deploy_to, "/Users/tictac/Sites/RoRapps/#{application}"
 set :user, "gonr1001"
 set :group, "ror"
