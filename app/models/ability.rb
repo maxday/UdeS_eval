@@ -8,12 +8,14 @@ class Ability
       can :manage, :none
       can :manage, Project
       can :manage, Quarter
+      can :manage, Question
+
     elsif user.role? :supervisor
       can :manage, :none
-      can [:read, :create], Project
+      can [:read, :create], [Project, Quarter, Question]
     else
       can :manage, :none
-      can :read, Project
+      can :read, [Project, Quarter, Question]
     end
   end
 end
