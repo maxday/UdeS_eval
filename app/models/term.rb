@@ -1,4 +1,4 @@
-class Quarter < ActiveRecord::Base
+class Term < ActiveRecord::Base
   attr_accessible :name
 
   validates :name,

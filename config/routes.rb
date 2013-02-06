@@ -2,7 +2,7 @@ EvalPP7P8::Application.routes.draw do
 
   resources :questions
 
-  resources :quarters
+  resources :terms
 
   resources :projects
 

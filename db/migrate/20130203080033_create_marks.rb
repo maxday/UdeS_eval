@@ -4,7 +4,7 @@ class CreateMarks < ActiveRecord::Migration
       t.integer :student_from_id
       t.integer :student_to_id
       t.integer :question_id
-      t.integer :quarter_id
+      t.integer :term_id
       t.integer :value
 
       t.timestamps

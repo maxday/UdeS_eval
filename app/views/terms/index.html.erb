@@ -1,0 +1,23 @@
+<h1>Liste des sessions</h1>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @terms.each do |term| %>
+  <tr>
+    <td><%= term.name %></td>
+    <td><%= link_to 'Voir', term %></td>
+    <td><%= link_to 'Editer', edit_term_path(term) %></td>
+    <td><%= link_to 'Supprimer', term, confirm: 'Êtes-vous sûr ?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nouvelle session', new_term_path %>

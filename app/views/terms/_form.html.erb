@@ -1,10 +1,10 @@
-<%= form_for(@quarter) do |f| %>
-  <% if @quarter.errors.any? %>
+<%= form_for(@term) do |f| %>
+  <% if @term.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@quarter.errors.count, "error") %> prohibited this quarter from being saved:</h2>
+      <h2><%= pluralize(@term.errors.count, "error") %> prohibited this term from being saved:</h2>
 
       <ul>
-      <% @quarter.errors.full_messages.each do |msg| %>
+      <% @term.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
