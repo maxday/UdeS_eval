@@ -9,7 +9,7 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
 
-  test "Project name must not be unique" do
+  test "Project name must be unique" do
     project = Project.new(:name => "a")
     assert project.valid?
     project.save
