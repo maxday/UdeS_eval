@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: Evaluation par les pairs numéro 1
+  term_id: 1
+  begin_date:
+
+two:
+  name: Evaluation par les pairs numéro 2
+  term_id: 1
+
+three:
+  name: Evaluation par les pairs numéro 1
+  term_id: 2
+
+four:
+  name: Evaluation par les pairs numéro 2
+  term_id: 2

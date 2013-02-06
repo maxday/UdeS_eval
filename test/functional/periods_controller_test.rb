@@ -1,10 +1,9 @@
 require 'test_helper'
-include Devise::TestHelpers
 
-class TermsControllerTest < ActionController::TestCase
+class PeriodsControllerTest < ActionController::TestCase
 
   setup do
-    @term = terms(:one)
+    @period = periods(:one)
 
     #Administrator
     @administrator = User.find(4)
@@ -31,7 +30,7 @@ class TermsControllerTest < ActionController::TestCase
     sign_in @student
     get :index
     assert_response :success
-    assert_not_nil assigns(:terms)
+    assert_not_nil assigns(:periods)
   end
 
   test "should get new" do
@@ -40,57 +39,57 @@ class TermsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create term" do
+  test "should create period" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:create, Term.new(:name=>"a"))
+    assert ability.cannot?(:create, Period.new(:name=>"a"))
 
     ability = Ability.new(@supervisor)
-    assert ability.can?(:create, Term.new(:name=>"a"))
+    assert ability.can?(:create, Period.new(:name=>"a"))
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:create, Term.new(:name=>"a"))
+    assert ability.can?(:create, Period.new(:name=>"a"))
   end
 
-  test "should show term" do
+  test "should show period" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:show, @term)
+    assert ability.cannot?(:show, @period)
 
     ability = Ability.new(@supervisor)
-    assert ability.can?(:show, @term)
+    assert ability.can?(:show, @period)
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:show, @term)
+    assert ability.can?(:show, @period)
 
     sign_in @administrator
-    get :show, id: @term
+    get :show, id: @period
     assert_response :success
   end
 
   test "should get edit" do
     sign_in @administrator
-    get :show, id: @term
+    get :show, id: @period
     assert_response :success
   end
 
-  test "should update term" do
+  test "should update period" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:update, @term)
+    assert ability.cannot?(:update, @period)
 
     ability = Ability.new(@supervisor)
-    assert ability.cannot?(:update, @term)
+    assert ability.cannot?(:update, @period)
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:update, @term)
+    assert ability.can?(:update, @period)
   end
 
-  test "should destroy term" do
+  test "should destroy period" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:destroy, Term.first)
+    assert ability.cannot?(:destroy, Period.first)
 
     ability = Ability.new(@supervisor)
-    assert ability.cannot?(:destroy, Term.first)
+    assert ability.cannot?(:destroy, Period.first)
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:destroy, Term.first)
+    assert ability.can?(:destroy, Period.first)
   end
 end

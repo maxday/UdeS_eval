@@ -46,7 +46,7 @@ class TeamsControllerTest < ActionController::TestCase
 
   test "should show team" do
     ability = Ability.new(@student)
-    assert ability.can?(:show, @team)
+    assert ability.cannot?(:show, @team)
 
     ability = Ability.new(@supervisor)
     assert ability.can?(:show, @team)
