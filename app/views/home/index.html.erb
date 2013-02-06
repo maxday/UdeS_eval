@@ -1,4 +1,12 @@
 Bonjour <%=  current_user.username %>,  <br />
 Vous êtes : <%= @role_name %>
 <hr />
+
+<%  if current_user.role?(:administrator) or current_user.role?(:supervisor) %>
+    <ul>
+      <li><%=  link_to 'Gérer les équipes', teams_path %></li>
+      <li><%=  link_to 'Gérer les sessions', terms_path %></li>
+    </ul>
+<% end %>
+<hr />
 <%= link_to 'Se deconnecter', destroy_user_session_url, :method => :delete %>
