@@ -1,7 +1,7 @@
 class Period < ActiveRecord::Base
-  attr_accessible :name, :term_id
+  attr_accessible :name, :term_id, :begin_date, :due_date
 
-  validates :name,
+  validates :name, :term_id,
             :presence => true
 
 end

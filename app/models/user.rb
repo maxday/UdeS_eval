@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   #roles for Cancan
   has_and_belongs_to_many :roles
-  belongs_to :projects
+  has_and_belongs_to_many :teams
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -26,4 +26,7 @@ class User < ActiveRecord::Base
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
+
+  scope :only_students, joins(:roles).where("roles.name = ?", "Student")
+
 end

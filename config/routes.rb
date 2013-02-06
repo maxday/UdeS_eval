@@ -12,6 +12,9 @@ EvalPP7P8::Application.routes.draw do
 
   resources :roles
 
+  resources :students
+
+
   root :to => 'home#index'
 
   devise_for :users

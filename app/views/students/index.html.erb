@@ -1,0 +1,5 @@
+<ul>
+  <% @students.each do |single_student| %>
+    <li><%= single_student.username %> - <%= link_to 'Editer', edit_student_path(single_student) %></li>
+<% end %>
+</ul>

@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: H13
+  id: 1
 
 two:
-  name: MyString
+  name: H14
+  id: 2
