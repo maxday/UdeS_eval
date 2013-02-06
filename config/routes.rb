@@ -1,5 +1,7 @@
 EvalPP7P8::Application.routes.draw do
 
+  resources :years
+
   resources :questions
 
   resources :terms
