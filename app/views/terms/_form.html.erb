@@ -15,6 +15,12 @@
     Nom de la session<br />
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    Année de la session<br />
+    <%= f.collection_select :year_id, Year.all, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Valider" %>
   </div>
