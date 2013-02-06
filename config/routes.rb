@@ -4,7 +4,7 @@ EvalPP7P8::Application.routes.draw do
 
   resources :terms
 
-  resources :projects
+  resources :teams
 
   resources :roles
 

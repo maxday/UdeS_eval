@@ -7,7 +7,6 @@ user = User.seed do |s|
   s.username = "etud1000"
   s.email = "etud1000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 1
 end
 User.find(1).roles << student_role
 
@@ -16,7 +15,6 @@ User.seed do |s|
   s.username = "etud2000"
   s.email = "etud2000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 1
 end
 User.find(2).roles << student_role
 
@@ -25,7 +23,6 @@ User.seed do |s|
   s.username = "etud3000"
   s.email = "etud3000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 1
 end
 User.find(3).roles << student_role
 
@@ -34,7 +31,6 @@ User.seed do |s|
   s.username = "etud4000"
   s.email = "etud4000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 1
 end
 User.find(4).roles << student_role
 
@@ -43,7 +39,6 @@ User.seed do |s|
   s.username = "etud5000"
   s.email = "etud5000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 2
 end
 User.find(5).roles << student_role
 
@@ -52,7 +47,6 @@ User.seed do |s|
   s.username = "etud6000"
   s.email = "etud6000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 2
 end
 User.find(6).roles << student_role
 
@@ -61,7 +55,6 @@ User.seed do |s|
   s.username = "etud7000"
   s.email = "etud7000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 2
 end
 User.find(7).roles << student_role
 
@@ -70,7 +63,6 @@ User.seed do |s|
   s.username = "etud8000"
   s.email = "etud8000@usherbrooke.ca"
   s.encrypted_password  = "$2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2"
-  s.project_id = 2
 end
 User.find(8).roles << student_role
 

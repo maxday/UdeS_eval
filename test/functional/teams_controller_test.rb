@@ -1,11 +1,11 @@
 require 'test_helper'
 include Devise::TestHelpers
 
-class ProjectsControllerTest < ActionController::TestCase
+class TeamsControllerTest < ActionController::TestCase
 
 
   setup do
-    @project = projects(:one)
+    @team = teams(:one)
 
     #Administrator
     @administrator = User.find(4)
@@ -24,7 +24,7 @@ class ProjectsControllerTest < ActionController::TestCase
     sign_in @administrator
     get :index
     assert_response :success
-    assert_not_nil assigns(:projects)
+    assert_not_nil assigns(:teams)
   end
 
   test "should get new" do
@@ -33,58 +33,58 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create project" do
+  test "should create team" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:create, Project.new(:name=>"a"))
+    assert ability.cannot?(:create, Team.new(:name=>"a"))
 
     ability = Ability.new(@supervisor)
-    assert ability.can?(:create, Project.new(:name=>"a"))
+    assert ability.can?(:create, Team.new(:name=>"a"))
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:create, Project.new(:name=>"a"))
+    assert ability.can?(:create, Team.new(:name=>"a"))
   end
 
-  test "should show project" do
+  test "should show team" do
     ability = Ability.new(@student)
-    assert ability.can?(:show, @project)
+    assert ability.can?(:show, @team)
 
     ability = Ability.new(@supervisor)
-    assert ability.can?(:show, @project)
+    assert ability.can?(:show, @team)
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:show, @project)
+    assert ability.can?(:show, @team)
 
     sign_in @administrator
-    get :show, id: @project
+    get :show, id: @team
     assert_response :success
   end
 
   test "should get edit" do
     sign_in @administrator
-    get :show, id: @project
+    get :show, id: @team
     assert_response :success
   end
 
-  test "should update project" do
+  test "should update team" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:update, @project)
+    assert ability.cannot?(:update, @team)
 
     ability = Ability.new(@supervisor)
-    assert ability.cannot?(:update, @project)
+    assert ability.cannot?(:update, @team)
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:update, @project)
+    assert ability.can?(:update, @team)
   end
 
-  test "should destroy project" do
+  test "should destroy team" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:destroy, Project.first)
+    assert ability.cannot?(:destroy, Team.first)
 
     ability = Ability.new(@supervisor)
-    assert ability.cannot?(:destroy, Project.first)
+    assert ability.cannot?(:destroy, Team.first)
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:destroy, Project.first)
+    assert ability.can?(:destroy, Team.first)
   end
 
 end

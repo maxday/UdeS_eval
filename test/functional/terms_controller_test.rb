@@ -85,12 +85,12 @@ class TermsControllerTest < ActionController::TestCase
 
   test "should destroy term" do
     ability = Ability.new(@student)
-    assert ability.cannot?(:destroy, Project.first)
+    assert ability.cannot?(:destroy, Term.first)
 
     ability = Ability.new(@supervisor)
-    assert ability.cannot?(:destroy, Project.first)
+    assert ability.cannot?(:destroy, Term.first)
 
     ability = Ability.new(@administrator)
-    assert ability.can?(:destroy, Project.first)
+    assert ability.can?(:destroy, Term.first)
   end
 end
