@@ -1,0 +1,29 @@
+<%= form_for(@affectation) do |f| %>
+  <% if @affectation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@affectation.errors.count, "error") %> prohibited this affectation from being saved:</h2>
+
+      <ul>
+      <% @affectation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      Login (cip) : <br />
+      <%= f.collection_select :user_id, User.all, :id, :username %>
+    </div>
+    <div class="field">
+      Equipe : <br />
+      <%= f.collection_select :team_id, Team.all, :id, :name %>
+    </div>
+    <div class="field">
+      Session : <br />
+      <%= f.collection_select :term_id, Term.all, :id, :name %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

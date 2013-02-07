@@ -1,0 +1,27 @@
+<h1>Liste des étudiants</h1>
+
+<table>
+  <tr>
+    <th>Etudiant</th>
+    <th>Equipe</th>
+    <th>Session</th>
+    <th>Année</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @affectations.each do |affectation| %>
+  <tr>
+    <td><%= User.find(affectation.user_id).username %></td>
+    <td><%= Team.find(affectation.team_id).name %></td>
+    <td><%= Term.find(affectation.term_id).name %></td>
+    <td><%= Year.find(affectation.term_id).name %></td>
+    <td><%= link_to 'Editer', edit_affectation_path(affectation) %></td>
+    <td><%= link_to 'Supprimer', affectation, confirm: 'Etes-vous sur?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nouvelle affectation', new_affectation_path %>
