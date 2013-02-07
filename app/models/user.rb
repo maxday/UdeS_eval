@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   #roles for Cancan
   has_and_belongs_to_many :roles
-  has_and_belongs_to_many :teams
+  has_many :teams
+  has_many :affectations, :through => :teams
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

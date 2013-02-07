@@ -5,13 +5,11 @@
     <th>Nom</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.name %></td>
-    <td><%= link_to 'Voir', team %></td>
     <td><%= link_to 'Editer', edit_team_path(team) %></td>
     <td><%= link_to 'Supprimer', team, confirm: 'Êtes-vous sûr ?', method: :delete %></td>
   </tr>

@@ -5,13 +5,11 @@
     <th>Nom</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @years.each do |year| %>
   <tr>
     <td><%= year.name %></td>
-    <td><%= link_to 'Voir', year %></td>
     <td><%= link_to 'Editer', edit_year_path(year) %></td>
     <td><%= link_to 'Supprimer', year, confirm: 'Etes-vous sûr?', method: :delete %></td>
   </tr>

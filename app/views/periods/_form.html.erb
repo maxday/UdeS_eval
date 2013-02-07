@@ -1,0 +1,40 @@
+<%= form_for(@period) do |f| %>
+    <% if @period.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@period.errors.count, "error") %> prohibited this period from being saved:</h2>
+
+          <ul>
+            <% @period.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      Nom : <br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      Sélectionnez la date de début de la période : <br />
+
+      <%= f.date_select :begin_date, :start_year=>2012,
+                        :use_month_numbers=>true,
+                        :order=>[:day, :month, :year]%>
+    </div>
+    <div class="field">
+      Sélectionnez la date de fin de la période : <br />
+
+      <%= f.date_select :due_date, :start_year=>2012,
+                        :use_month_numbers=>true,
+                        :order=>[:day, :month, :year]%>
+    </div>
+    <div class="field">
+      Session : <br />
+      <%= f.collection_select :term_id, Term.all, :id, :name %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Valider"%>
+    </div>
+<% end %>
+

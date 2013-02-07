@@ -1,0 +1,28 @@
+<h1>Liste des périodes</h1>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Date de début</th>
+    <th>Date de fin</th>
+    <th>Session</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @periods.each do |period| %>
+      <tr>
+        <td><%= period.name %></td>
+        <td><%= period.begin_date %></td>
+        <td><%= period.due_date %></td>
+        <td><%= Term.find(period.term_id).name %></td>
+        <td><%= link_to 'Editer', edit_period_path(period) %></td>
+        <td><%= link_to 'Supprimer', period, method: :delete, data: { confirm: 'Etes-vous sur ?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nouvelle période', new_period_path %>
