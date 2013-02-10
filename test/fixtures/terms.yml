@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: H13
+  name: S7
   id: 1
 
 two:
-  name: H14
+  name: S8
+  id: 1
+
+three:
+  name: S7
   id: 2

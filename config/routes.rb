@@ -19,6 +19,13 @@ EvalPP7P8::Application.routes.draw do
   resources :students
 
 
+  resources :evaluations do
+    collection do
+      get 'select'
+      post 'select'
+    end
+  end
+
   root :to => 'home#index'
 
   devise_for :users

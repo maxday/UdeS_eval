@@ -4,6 +4,6 @@ class Mark < ActiveRecord::Base
   belongs_to :students
   belongs_to :students
   belongs_to :questions
-  belongs_to :terms
+  belongs_to :periods
 
 end

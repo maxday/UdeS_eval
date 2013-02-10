@@ -28,6 +28,38 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
 
+  #get the team name for a given term
+  def project?(term)
+    return Team.find(Affectation.where(:user_id => self, :term_id => term).first.team_id).name
+  end
+
+  #get all marks given to other students for a given period
+  def all_marks_received?(period)
+     return Mark.where(:student_to_id => self, :period_id => period)
+  end
+
+  #get all marks received from other students for a given period
+  def all_marks_given?(period)
+    return Mark.where(:student_from_id => self, :period_id => period)
+  end
+
+  #get sof average (real average minus max and min)
+  def soft_average?(period)
+    allMarks = Mark.where(:student_to_id => self, :period_id => period)
+    array = Array.new
+    allMarks.each do |single_mark|
+      array.push(single_mark.value)
+    end
+    array.sort
+    array.delete_at(0)
+    array.delete_at(array.size)
+    return array.sum.to_f / array.size
+
+  end
+
+
+
+
   scope :only_students, joins(:roles).where("roles.name = ?", "Student")
 
 end

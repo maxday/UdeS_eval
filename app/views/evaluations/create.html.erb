@@ -1,0 +1,30 @@
+<h1>Voir les notes</h1>
+
+Vous consulter l'évaluation suivante : <%= @period.fullname %>
+
+<table>
+  <tr>
+    <th>Etudiant</th>
+    <th>Equipe</th>
+    <th>Nombre de notes données</th>
+    <th>Nombre de notes reçues</th>
+    <th>Note la plus haute</th>
+    <th>Note la plus basse</th>
+    <th>Moyenne réelle</th>
+    <th>Moyenne adoucie</th>
+    <th>Détail</th>
+  </tr>
+  <% @students.each do |single_student| %>
+      <tr>
+        <td><%= single_student.username %></td>
+        <td><%= single_student.project?(@period.term_id) %></td>
+        <td><%= single_student.all_marks_given?(@period).count %></td>
+        <td><%= single_student.all_marks_received?(@period).count %></td>
+        <td><%= single_student.all_marks_received?(@period).minimum :value %></td>
+        <td><%= single_student.all_marks_received?(@period).maximum :value %></td>
+        <td><%= single_student.all_marks_received?(@period).average :value %></td>
+        <td><%= single_student.soft_average?(@period).inspect %></td>
+
+      </tr>
+  <% end %>
+</table>

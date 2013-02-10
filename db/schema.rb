@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20130209203602) do
     t.integer  "student_from_id"
     t.integer  "student_to_id"
     t.integer  "question_id"
-    t.integer  "term_id"
+    t.integer  "period_id"
     t.integer  "value"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
