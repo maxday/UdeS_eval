@@ -11,6 +11,13 @@ Vous êtes : <%= @role_name %>
       <li><%=  link_to 'Gérer les élèves', affectations_path %></li>
       <li><%=  link_to 'Gérer les catégories', categories_path %></li>
       <li><%=  link_to 'Gérer les questions', questions_path %></li>
+      <li><%=  link_to 'Gérer les catégories', categories_path %></li>
+      <li><%=  link_to 'Gérer les évaluations', evaluations_path %></li>
+    </ul>
+<% end %>
+<%  if current_user.role?(:student) %>
+    <ul>
+      <li><%=  link_to 'Evaluez !', rates_path %></li>
     </ul>
 <% end %>
 <hr />
