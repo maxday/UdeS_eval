@@ -18,6 +18,12 @@ EvalPP7P8::Application.routes.draw do
 
   resources :students
 
+  resources :rates do
+    collection do
+      get 'save'
+      post 'save'
+    end
+  end
 
   resources :evaluations do
     collection do
