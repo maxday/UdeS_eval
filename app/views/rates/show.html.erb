@@ -1,0 +1,31 @@
+<h1>Evaluation de vos pairs</h1>
+
+    <%= form_for @current, :url => "/rates/save", :period_id => @period.id do %>
+    <% @period.all_question.each do |single_question| %>
+        <table>
+          <th colspan="3">Question : <%= single_question.name %></th>
+          <tr>
+            <td>Nom de l'étudiant</td>
+            <td>Note</td>
+          </tr>
+          <% current_user.team?(@period.term_id).all_members?(@period.term_id).each do |single_student| %>
+              <tr>
+                <td><%= User.find(single_student.user_id).username %></td>
+                <% default_mark = Mark.where(:period_id => @period,
+                                             :student_to_id => single_student.user_id,
+                                             :student_from_id => current_user,
+                                             :question_id => single_question.id).first
+                   if default_mark.nil?
+                     default_mark = ""
+                   else
+                     default_mark = default_mark.value
+                   end
+                %>
+                <td><%= text_field "rate[question_ids][#{single_question.id}]", single_student.user_id, :value => default_mark %></td>
+              </tr>
+          <% end %>
+        </table>
+    <% end %>
+    <%= submit_tag("Valider") %>
+<% end %>
+

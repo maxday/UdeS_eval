@@ -22,6 +22,8 @@ EvalPP7P8::Application.routes.draw do
     collection do
       get 'save'
       post 'save'
+      get 'select'
+      post 'select'
     end
   end
 
@@ -32,6 +34,7 @@ EvalPP7P8::Application.routes.draw do
     end
   end
   match 'evaluations/:period_id/:user_id' => 'details#index', :as => :detail
+
 
   root :to => 'home#index'
 
