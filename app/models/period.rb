@@ -12,6 +12,10 @@ class Period < ActiveRecord::Base
     term = Term.find(self.term_id)
     fullname = "#{Year.find(term.year_id).name} - #{term.name} - #{self.name}"
   end
+
+  def all_question
+    return Question.where(:period_id => self)
+  end
 end
 
 

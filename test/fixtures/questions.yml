@@ -4,20 +4,23 @@ one:
   id: 1
   name: Question 1
   category_id: 1
+  period_id: 1
 
 
 two:
   id: 2
   name: Question 2
   category_id: 1
+  period_id: 1
 
 three:
   id: 3
   name: Question 3
   category_id: 2
-
+  period_id: 1
 
 four:
   id: 4
   name: Question 4
   category_id: 2
+  period_id: 1

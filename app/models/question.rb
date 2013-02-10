@@ -5,4 +5,8 @@ class Question < ActiveRecord::Base
 
   validates :name,
             :presence => true
+
+  def all_answsers?(student, period)
+    return Mark.where(:question_id => self, :student_to_id => student, :period_id => period)
+  end
 end

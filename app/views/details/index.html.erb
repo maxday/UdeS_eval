@@ -1,3 +1,23 @@
 <h1> Détail des notes</h1>
-Vous consultez la période suivante : <%=  @period.fullname %>    <br />
-Vous consultez l'étudiant suivant : <%= @student.username %>
+<ul>
+  <li>Vous consultez la période suivante : <%=  @period.fullname %></li>
+  <li>Vous consultez l'étudiant suivant : <%= @student.username %></li>
+</ul>
+
+
+
+<% @period.all_question.each do |single_question| %>
+    <table>
+      <th colspan="3">Question : <%= single_question.name %></th>
+      <tr>
+        <td>Nom de l'étudiant</td>
+        <td>Note</td>
+      </tr>
+      <% single_question.all_answsers?(@student, @period).each do |mark| %>
+        <tr>
+          <td><%= User.find(mark.student_from_id).username %></td>
+          <td><%= mark.value  %></td>
+        </tr>
+      <% end %>
+    </table>
+<% end %>
