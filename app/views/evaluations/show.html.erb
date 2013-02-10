@@ -17,13 +17,18 @@ Vous consulter l'évaluation suivante : <%= @period.fullname %>
   <% @students.each do |single_student| %>
       <tr>
         <td><%= single_student.username %></td>
-        <td><%= single_student.project?(@period.term_id) %></td>
+        <td><%= single_student.team?(@period.term_id).name %></td>
         <td><%= single_student.all_marks_given?(@period).count %></td>
         <td><%= single_student.all_marks_received?(@period).count %></td>
         <td><%= single_student.all_marks_received?(@period).minimum :value %></td>
         <td><%= single_student.all_marks_received?(@period).maximum :value %></td>
         <td><%= single_student.all_marks_received?(@period).average :value %></td>
-        <td><%= single_student.soft_average?(@period).inspect %></td>
+        <% avg = single_student.soft_average?(@period) %>
+        <% if single_student.final?(@period) %>
+            <td class="success"><%= avg %></td>
+        <% else %>
+            <td class="warning"><%= avg %></td>
+        <% end %>
         <td><%= link_to "Détails", detail_url(@period, single_student) %></td>
       </tr>
   <% end %>

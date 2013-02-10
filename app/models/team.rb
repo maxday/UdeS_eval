@@ -7,4 +7,8 @@ class Team < ActiveRecord::Base
   validates :name,
             :presence => true,
             :uniqueness => true
+
+  def how_many?(term)
+    return Affectation.where(:team_id => self, :team_id => term).count
+  end
 end
