@@ -24,6 +24,7 @@ Vous consulter l'évaluation suivante : <%= @period.fullname %>
         <td><%= single_student.all_marks_received?(@period).maximum :value %></td>
         <td><%= single_student.all_marks_received?(@period).average :value %></td>
         <td><%= single_student.soft_average?(@period).inspect %></td>
+        <td><%= link_to "Détails", detail_url(@period, single_student) %></td>
       </tr>
   <% end %>
 </table>

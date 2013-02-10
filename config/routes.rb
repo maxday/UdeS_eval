@@ -25,6 +25,7 @@ EvalPP7P8::Application.routes.draw do
       post 'select'
     end
   end
+  match 'evaluations/:period_id/:user_id' => 'details#index', :as => :detail
 
   root :to => 'home#index'
 
