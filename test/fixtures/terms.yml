@@ -2,12 +2,15 @@
 
 one:
   name: S7
+  year_id: 1
   id: 1
 
 two:
   name: S8
+  year_id: 1
   id: 2
 
 three:
   name: S7
+  year_id: 2
   id: 3

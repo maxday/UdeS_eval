@@ -2,7 +2,9 @@
 
 <table>
   <tr>
-    <th>Etudiant</th>
+    <th>Cip</th>
+    <th>Nom</th>
+    <th>Matricule</th>
     <th>Equipe</th>
     <th>Session</th>
     <th>Année</th>
@@ -13,6 +15,8 @@
 <% @affectations.each do |affectation| %>
   <tr>
     <td><%= User.find(affectation.user_id).username %></td>
+    <td><%= User.find(affectation.user_id).fullname %></td>
+    <td><%= User.find(affectation.user_id).matricule %></td>
     <td><%= Team.find(affectation.team_id).name %></td>
     <td><%= Term.find(affectation.term_id).name %></td>
     <td><%= Year.find(affectation.term_id).name %></td>

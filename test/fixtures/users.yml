@@ -3,57 +3,71 @@ one:
   username: etud1000
   email: etud1000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+  matricule: 10001000
+  fullname: Mickey, Mouse
 
 two:
   id: 2
   username: etud2000
   email: etud2000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+  matricule: 20002000
+  fullname: Minnie, Mouse
 
 three:
   id: 3
   username: etud3000
   email: etud3000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
-
+  matricule: 30003000
+  fullname: Donald, Duck
 four:
   id: 4
   username: etud4000
   email: etud4000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
-
+  matricule: 40004000
+  fullname: Goofy, Goof
 five:
   id: 5
   username: etud5000
   email: etud5000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+  matricule: 50005000
+  fullname: Pat, Hibulaire
 
 six:
   id: 6
   username: etud6000
   email: etud6000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
-
+  matricule: 60006000
+  fullname: Peter, Pan
 seven:
   id: 7
   username: etud7000
   email: etud7000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
-
+  matricule: 70007000
+  fullname: Gripsou, Archibald
 eight:
   id: 8
   username: etud8000
   email: etud8000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
-
+  matricule: 80008000
+  fullname: La fée, Clochette
 nine:
   id: 9
   username: supe1000
   email: supe1000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
-
+  matricule: 11111111
+  fullname: Jiminy, Cricket
 ten:
   id: 10
   username: admi1000
   email: admi1000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+  matricule: 99999999
+  fullname: Merlin, L'enchanteur

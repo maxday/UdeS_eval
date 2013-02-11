@@ -17,4 +17,15 @@ class TeamTest < ActiveSupport::TestCase
     assert team.invalid?
   end
 
+
+  test "How many method" do
+    first_team = Team.first
+    assert_equal first_team.how_many?(Term.first),  3
+  end
+
+  test "All member methed" do
+    first_team = Team.first
+    first_term = Term.first
+    assert_equal first_team.how_many?(first_term), first_team.all_members?(first_term).count
+  end
 end
