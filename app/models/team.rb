@@ -15,4 +15,5 @@ class Team < ActiveRecord::Base
   def all_members?(term)
     return Affectation.where(:team_id => self, :term_id => term)
   end
+
 end

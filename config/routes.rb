@@ -18,6 +18,8 @@ EvalPP7P8::Application.routes.draw do
 
   resources :students
 
+  resources :uploads
+
   resources :rates do
     collection do
       get 'save'
@@ -34,6 +36,7 @@ EvalPP7P8::Application.routes.draw do
     end
   end
   match 'evaluations/:period_id/:user_id' => 'details#index', :as => :detail
+  match 'uploads/upload' => 'uploads#upload', :as => :upload
 
 
   root :to => 'home#index'

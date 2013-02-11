@@ -5,9 +5,12 @@ class Term < ActiveRecord::Base
   has_many :periods
 
   validates :name,
-            :presence => true,
-            :uniqueness => false
+            :presence => true
 
   validates :year_id,
             :presence => true
+
+  validates_uniqueness_of :name, :scope => [:name, :year_id]
+
+
 end

@@ -17,3 +17,10 @@ tr, td, th {
     padding:10px;
     margin:0px;
 }
+
+li.import_error {
+    color:#FF0000;
+}
+li.import_success {
+    color:#006600;
+}

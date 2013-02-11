@@ -34,6 +34,8 @@ gem 'cancan'
 #seed model
 gem 'seed-fu'
 
+# read from Excel
+gem 'roo', '~> 1.10.1'
 
 # Deploy with Capistrano
 gem 'capistrano'

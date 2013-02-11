@@ -1,0 +1,19 @@
+<ul>
+  <% if !session[:errors].nil? %>
+    <%  session[:errors].each do |single_error| %>
+      <li class="import_error"><%= single_error %></li>
+      <% end %>
+  <% session.delete(:errors)  end %>
+</ul>
+<ul>
+  <% if !session[:infos].nil? %>
+      <% session[:infos].each do |single_info| %>
+          <li class="import_success"><%= single_info %></li>
+      <% end %>
+  <% session.delete(:infos) end %>
+</ul>
+
+<%= form_for :file_upload, :html => {:multipart => true} do |f| %>
+    <%= f.file_field :eval %>
+    <%= f.submit "Upload" %>
+<% end %>
