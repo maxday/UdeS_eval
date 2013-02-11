@@ -7,11 +7,11 @@ class TermsControllerTest < ActionController::TestCase
     @term = terms(:one)
 
     #Administrator
-    @administrator = User.find(4)
+    @administrator = User.find(10)
     assert_equal(@administrator.role_ids.first, 3)
 
     #Supervisor
-    @supervisor = User.find(3)
+    @supervisor = User.find(9)
     assert_equal(@supervisor.role_ids.first, 2)
 
     #Student

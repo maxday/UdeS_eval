@@ -12,12 +12,48 @@ two:
 
 three:
   id: 3
-  username: supe1000
-  email: supe1000@usherbrooke.ca
+  username: etud3000
+  email: etud3000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
 
 four:
   id: 4
+  username: etud4000
+  email: etud4000@usherbrooke.ca
+  encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+
+five:
+  id: 5
+  username: etud5000
+  email: etud5000@usherbrooke.ca
+  encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+
+six:
+  id: 6
+  username: etud6000
+  email: etud6000@usherbrooke.ca
+  encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+
+seven:
+  id: 7
+  username: etud7000
+  email: etud7000@usherbrooke.ca
+  encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+
+eight:
+  id: 8
+  username: etud8000
+  email: etud8000@usherbrooke.ca
+  encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+
+nine:
+  id: 9
+  username: supe1000
+  email: supe1000@usherbrooke.ca
+  encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
+
+ten:
+  id: 10
   username: admi1000
   email: admi1000@usherbrooke.ca
   encrypted_password: $2a$10$JD1FE..pvhBDV2S5ZyMfIOp1w8t.wDSe8GAVNS1GZ9ySv.WKOzbU2
