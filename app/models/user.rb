@@ -54,10 +54,13 @@ class User < ActiveRecord::Base
 
     #delete minimum and maximum
     array.delete_at(0)
-    array.delete_at(array.size)
+    if array.size != 0
+      array.delete_at(array.size-1)
+    end
 
-    # no marks -> error
-    if array.count == 0
+
+    # no marks left ?-> error
+    if array.size == 0
       return 0
     end
     return array.sum.to_f / array.size
