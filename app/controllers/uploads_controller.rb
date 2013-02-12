@@ -1,5 +1,6 @@
+# encoding: UTF-8
 class UploadsController < ApplicationController
-  require 'roo'
+
 
   def index
 
@@ -7,17 +8,20 @@ class UploadsController < ApplicationController
 
   def create
     require 'fileutils'
+
     time = Time.now
     file_name = time.to_formatted_s(:number)
 
     uploaded_io = params[:file_upload][:eval].tempfile
     File.open(Rails.root.join('public', 'uploads', "#{file_name}.xlsx"), 'wb') do |file|
       file.write(uploaded_io.read)
+      file.close
     end
 
 
-    oo = Excelx.new(Rails.root.to_s + "/public/uploads/#{file_name}.xlsx")
-    oo.default_sheet = oo.sheets.first
+
+    oo = RubyXL::Parser.parse(Rails.root.to_s + "/public/uploads/#{file_name}.xlsx")
+    sheet = oo.worksheets[0]
 
     @errors = Array.new
     @infos = Array.new
@@ -26,32 +30,46 @@ class UploadsController < ApplicationController
 
     student_role = Role.where(:name => "Student")
 
-    2.upto(oo.last_row) do |line|
+    data = sheet.get_table(["Cip"])
+
+    logger.info data.inspect
+    2.upto(5) do |line|
 
       #load data into specific vars
-      username = oo.cell(line, 'A')
-      matricule = oo.excelx_value(line, 'B')
-      fullname = oo.cell(line, 'C')
-      email = oo.cell(line, 'D')
-      team = oo.cell(line,'E')
-      term = oo.cell(line,'F')
-      year = oo.excelx_value(line,'G')
+      username = data["Cip"][line]
+      matricule = data["Matricule"][line]
+      fullname = data["Nom"][line]
+      email = data["Courriel"][line]
+      team = data["Team"][line]
+      term = data["Session"][line]
+      year = data["Année"][line]
+      logger.info username
+      logger.info matricule
+      logger.info fullname
+      logger.info email
+      logger.info year
+      logger.info term
+      logger.info "TEAM lue = "
+      logger.info team
+
 
       #year check
       if !checkYearExists?(year)
-        @errors.push "#{year} n'existe pas"
+        @errors.push "#{year} n'existe1 pas"
         is_error = true
       end
 
       #term check
       if !checkTermExists?(term, year)
-        @errors.push "#{term} n'existe pas"
+        @errors.push "#{term} n'existe2 pas"
         is_error = true
       end
 
       #team check
       if !checkTeamExists?(team)
-        @errors.push "#{team} n'existe pas"
+        logger.info "TEAM check = "
+        logger.info team
+        @errors.push "#{team} n'existe3 pas"
         is_error = true
       end
 
@@ -73,9 +91,9 @@ class UploadsController < ApplicationController
         if single_user.save
           @infos.push "Importation de : #{single_user.fullname} OK"
         end
-        team = oo.cell(i,'E')
-        term = oo.cell(i,'F')
-        year = oo.excelx_value(i,'G')
+        team = data["Team"][i]
+        term = data["Session"][i]
+        year = data["Année"][i]
 
         new_affectation = create_affectation_from_excel(single_user, team, term, year)
         new_affectation.save
@@ -91,6 +109,10 @@ class UploadsController < ApplicationController
   end
 
   def checkTeamExists?(team)
+    logger.info "team ="
+    logger.info team
+    logger.info "get db"
+    logger.info  Team.where(:name => team).count
     return Team.where(:name => team).count == 1
   end
 
