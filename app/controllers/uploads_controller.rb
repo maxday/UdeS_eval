@@ -18,10 +18,8 @@ class UploadsController < ApplicationController
       file.close
     end
 
-
-
-    oo = RubyXL::Parser.parse(Rails.root.to_s + "/public/uploads/#{file_name}.xlsx")
-    sheet = oo.worksheets[0]
+    excel = RubyXL::Parser.parse(Rails.root.to_s + "/public/uploads/#{file_name}.xlsx")
+    sheet = excel.worksheets[0]
 
     @errors = Array.new
     @infos = Array.new
@@ -32,9 +30,8 @@ class UploadsController < ApplicationController
 
     data = sheet.get_table(["Cip"])
 
-    logger.info data.inspect
-    2.upto(5) do |line|
-
+    # 2 = skip header
+    2.upto(data["Cip"].count-2) do |line|
       #load data into specific vars
       username = data["Cip"][line]
       matricule = data["Matricule"][line]
@@ -43,33 +40,22 @@ class UploadsController < ApplicationController
       team = data["Team"][line]
       term = data["Session"][line]
       year = data["Année"][line]
-      logger.info username
-      logger.info matricule
-      logger.info fullname
-      logger.info email
-      logger.info year
-      logger.info term
-      logger.info "TEAM lue = "
-      logger.info team
-
 
       #year check
       if !checkYearExists?(year)
-        @errors.push "#{year} n'existe1 pas"
+        @errors.push "#{year} n'existe pas"
         is_error = true
       end
 
       #term check
       if !checkTermExists?(term, year)
-        @errors.push "#{term} n'existe2 pas"
+        @errors.push "#{term} n'existe pas"
         is_error = true
       end
 
       #team check
       if !checkTeamExists?(team)
-        logger.info "TEAM check = "
-        logger.info team
-        @errors.push "#{team} n'existe3 pas"
+        @errors.push "#{team} n'existe pas"
         is_error = true
       end
 
@@ -99,7 +85,7 @@ class UploadsController < ApplicationController
         new_affectation.save
         i = i+1
       end
-      @infos.push "SUCCES : #{i-1} utilisateur importes"
+      @infos.push "SUCCES : #{i-2} utilisateur importes"
     else
       @errors.push "ECHEC rien n'a ete importe"
     end
@@ -109,10 +95,6 @@ class UploadsController < ApplicationController
   end
 
   def checkTeamExists?(team)
-    logger.info "team ="
-    logger.info team
-    logger.info "get db"
-    logger.info  Team.where(:name => team).count
     return Team.where(:name => team).count == 1
   end
 
