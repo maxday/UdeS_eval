@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :name, :category_id
+  attr_accessible :name, :category_id, :period_id
 
   belongs_to :categories;
 

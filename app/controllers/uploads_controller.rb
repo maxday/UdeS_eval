@@ -31,7 +31,7 @@ class UploadsController < ApplicationController
     data = sheet.get_table(["Cip"])
 
     # 2 = skip header
-    2.upto(data["Cip"].count-2) do |line|
+    0.upto(data["Cip"].count-2) do |line|
       #load data into specific vars
       username = data["Cip"][line]
       matricule = data["Matricule"][line]
@@ -72,7 +72,7 @@ class UploadsController < ApplicationController
     #delete same errors
     @errors = @errors.uniq
     if !is_error
-      i=2
+      i=0
       users_to_create.each do |single_user|
         if single_user.save
           @infos.push "Importation de : #{single_user.fullname} OK"
@@ -85,7 +85,7 @@ class UploadsController < ApplicationController
         new_affectation.save
         i = i+1
       end
-      @infos.push "SUCCES : #{i-2} utilisateur importes"
+      @infos.push "SUCCES : #{i} utilisateur importes"
     else
       @errors.push "ECHEC rien n'a ete importe"
     end

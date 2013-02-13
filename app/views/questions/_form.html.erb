@@ -21,6 +21,11 @@
     <%= f.collection_select :category_id, Category.all, :id, :name %>
   </div>
 
+  <div class="field">
+      Catégorie<br />
+      <%= f.collection_select :period_id, Period.all, :id, :fullname %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Valider" %>
   </div>
