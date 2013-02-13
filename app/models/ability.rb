@@ -6,13 +6,16 @@ class Ability
 
     if user.role? :administrator
       can :manage, :none
-      can :manage, [Team, Term, Question, Year, Period, Affectation, Category, Evaluation, Detail, Upload]
+      can :manage, [Team, Term, Question, Year, Period, Affectation, Category]
+      can :check, :evaluation
+      can :upload, :create
 
     elsif user.role? :supervisor
       can :manage, :none
-      can :manage, Evaluation
-      can [:read, :create, :edit], [Team, Term, Question, Year, Period, Affectation, Category, Detail, Upload]
+      can [:read, :create, :edit], [Team, Term, Question, Year, Period, Affectation, Category]
       can :read, Mark
+      can :check, :evaluation
+
     else
       can :manage, :none
       can :read, [Question]

@@ -1,13 +1,12 @@
 # encoding: UTF-8
 class UploadsController < ApplicationController
 
-  authorize_resource :class => false
-
   def index
-
+    authorize! :upload, :create
   end
 
   def create
+    authorize! :upload, :create
     require 'fileutils'
 
     time = Time.now

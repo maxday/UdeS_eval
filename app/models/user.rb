@@ -68,12 +68,11 @@ class User < ActiveRecord::Base
   end
 
 
-
   def final?(period)
-     return self.all_marks_received?(period).count == (self.team?(period).how_many?(period.term_id) - 1) * period.all_question.count
+     return self.all_marks_received?(period).count == (self.team?(period.term_id).how_many?(period.term_id) - 1) * period.all_question.count
   end
 
-
   scope :only_students, joins(:roles).where("roles.name = ?", "Student")
+
 
 end
