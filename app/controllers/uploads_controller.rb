@@ -43,20 +43,35 @@ class UploadsController < ApplicationController
 
       #year check
       if !checkYearExists?(year)
-        @errors.push "#{year} n'existe pas"
-        is_error = true
+        @errors.push "#{year} n'existait pas"
+        new_year = Year.new(:name => year)
+        if new_year.save
+          @infos.push "Annee #{year} est ajoute a la base"
+        else
+          is_error = true
+        end
       end
 
       #term check
       if !checkTermExists?(term, year)
-        @errors.push "#{term} n'existe pas"
-        is_error = true
+        @errors.push "#{term} n'existait pas"
+        new_term = Term.new(:name => term, :year_id => Year.where(:name =>year).first.id)
+        if new_term.save
+          @infos.push "Session #{new_term.fullname} est ajoutee a la base"
+        else
+          is_error = true
+        end
       end
 
       #team check
       if !checkTeamExists?(team)
-        @errors.push "#{team} n'existe pas"
-        is_error = true
+        @errors.push "#{team} n'existait pas"
+        new_team = Team.new(:name => team)
+        if new_team.save
+          @infos.push "Equipe #{new_team.name} est ajoutee a la base"
+        else
+          is_error = true
+        end
       end
 
       new_user = create_user_from_excel(username, email, matricule, fullname)
