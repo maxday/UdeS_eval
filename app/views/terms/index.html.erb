@@ -9,7 +9,7 @@
 
 <% @terms.each do |term| %>
   <tr>
-    <td><%= term.name %></td>
+    <td><%= term.fullname %></td>
     <td><%= link_to 'Editer', edit_term_path(term) %></td>
     <td><%= link_to 'Supprimer', term, confirm: 'Êtes-vous sûr ?', method: :delete %></td>
   </tr>

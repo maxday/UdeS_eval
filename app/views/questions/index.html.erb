@@ -4,6 +4,7 @@
   <tr>
     <th>Nom</th>
     <th>Catégorie</th>
+    <th>Session</th>
     <th></th>
     <th></th>
   </tr>
@@ -12,6 +13,7 @@
   <tr>
     <td><%= question.name %></td>
     <td><%= Category.find(question.category_id).name %></td>
+    <td><%= Term.find(question.period_id).fullname %></td>
     <td><%= link_to 'Editer', edit_question_path(question) %></td>
     <td><%= link_to 'Supprimer', question, confirm: 'Etes-vous sûr ?', method: :delete %></td>
   </tr>
