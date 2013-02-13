@@ -1,4 +1,7 @@
 class YearsController < ApplicationController
+
+  #load roles logic
+  load_and_authorize_resource
   # GET /years
   # GET /years.json
   def index

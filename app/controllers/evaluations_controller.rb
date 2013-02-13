@@ -1,4 +1,7 @@
 class EvaluationsController < ApplicationController
+
+  authorize_resource :class => false
+
   def index
     @periods = Period.all
     @current = Period.new

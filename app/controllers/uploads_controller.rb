@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class UploadsController < ApplicationController
 
+  authorize_resource :class => false
 
   def index
 

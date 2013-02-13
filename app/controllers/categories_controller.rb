@@ -1,4 +1,8 @@
 class CategoriesController < ApplicationController
+
+  #load roles logic
+  load_and_authorize_resource
+
   # GET /categories
   # GET /categories.json
   def index

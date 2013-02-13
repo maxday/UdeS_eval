@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
 
+
   #load roles logic
   load_and_authorize_resource
 

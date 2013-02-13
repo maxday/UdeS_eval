@@ -1,4 +1,8 @@
 class PeriodsController < ApplicationController
+
+  #load roles logic
+  load_and_authorize_resource
+
   # GET /periods
   # GET /periods.json
   def index

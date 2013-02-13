@@ -1,4 +1,7 @@
 class RatesController < ApplicationController
+
+
+
   def index
     @student = current_user
     @current = Mark.new

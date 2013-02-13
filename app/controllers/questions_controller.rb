@@ -1,4 +1,8 @@
 class QuestionsController < ApplicationController
+
+  #load roles logic
+  load_and_authorize_resource
+
   # GET /questions
   # GET /questions.json
   def index

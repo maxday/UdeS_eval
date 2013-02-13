@@ -1,4 +1,9 @@
 class AffectationsController < ApplicationController
+
+
+  #load roles logic
+  load_and_authorize_resource
+
   # GET /affectations
   # GET /affectations.json
   def index
