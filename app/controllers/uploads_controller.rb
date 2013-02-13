@@ -111,7 +111,7 @@ class UploadsController < ApplicationController
                     :email => email,
                     :matricule => matricule,
                     :fullname => fullname,
-                    :password => "aaaaaaaa")
+                    :password => "a")
   end
 
   def create_affectation_from_excel(user, team, term, year)
