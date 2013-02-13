@@ -16,4 +16,9 @@ class Team < ActiveRecord::Base
     return Affectation.where(:team_id => self, :term_id => term)
   end
 
+  def all_members_but_me?(term, user)
+    return Affectation.where(:team_id => self, :term_id => term)
+    #.where(['user_id <> ?', user.id])
+  end
+
 end

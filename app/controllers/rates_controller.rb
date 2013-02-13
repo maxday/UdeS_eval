@@ -36,7 +36,7 @@ class RatesController < ApplicationController
         end
       end
     end
-    redirect_to rate_path(1)
+    redirect_to rate_path(session[:period_id].id)
   end
 
   def select

@@ -8,7 +8,7 @@
             <td>Nom de l'étudiant</td>
             <td>Note</td>
           </tr>
-          <% current_user.team?(@period.term_id).all_members?(@period.term_id).each do |single_student| %>
+          <% current_user.team?(@period.term_id).all_members_but_me?(@period.term_id, current_user).each do |single_student| %>
               <tr>
                 <td><%= User.find(single_student.user_id).username %></td>
                 <% default_mark = Mark.where(:period_id => @period,

@@ -12,5 +12,8 @@ class Term < ActiveRecord::Base
 
   validates_uniqueness_of :name, :scope => [:name, :year_id]
 
+  def fullname
+    fullname = "#{Year.find(self.year_id).name} - #{self.name}"
+  end
 
 end

@@ -31,7 +31,7 @@
     </div>
     <div class="field">
       Session : <br />
-      <%= f.collection_select :term_id, Term.all, :id, :name %>
+      <%= f.collection_select :term_id, Term.all, :id, :fullname %>
     </div>
     <div class="actions">
       <%= f.submit "Valider"%>
