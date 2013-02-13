@@ -49,7 +49,7 @@ class AffectationsController < ApplicationController
 
     respond_to do |format|
       if @affectation.save
-        format.html { redirect_to @affectation, notice: 'Affectation was successfully created.' }
+        format.html { redirect_to affectations_path, notice: 'Affectation was successfully created.' }
         format.json { render json: @affectation, status: :created, location: @affectation }
       else
         format.html { render action: "new" }
@@ -65,7 +65,7 @@ class AffectationsController < ApplicationController
 
     respond_to do |format|
       if @affectation.update_attributes(params[:affectation])
-        format.html { redirect_to @affectation, notice: 'Affectation was successfully updated.' }
+        format.html { redirect_to affectations_path, notice: 'Affectation was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

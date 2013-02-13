@@ -47,7 +47,7 @@ class YearsController < ApplicationController
 
     respond_to do |format|
       if @year.save
-        format.html { redirect_to @year, notice: 'Year was successfully created.' }
+        format.html { redirect_to years_path, notice: 'Year was successfully created.' }
         format.json { render json: @year, status: :created, location: @year }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class YearsController < ApplicationController
 
     respond_to do |format|
       if @year.update_attributes(params[:year])
-        format.html { redirect_to @year, notice: 'Year was successfully updated.' }
+        format.html { redirect_to years_path, notice: 'Year was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

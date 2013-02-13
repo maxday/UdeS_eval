@@ -48,7 +48,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       if @term.save
-        format.html { redirect_to @term, notice: 'term was successfully created.' }
+        format.html { redirect_to terms_path, notice: 'term was successfully created.' }
         format.json { render json: @term, status: :created, location: @term }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       if @term.update_attributes(params[:term])
-        format.html { redirect_to @term, notice: 'term was successfully updated.' }
+        format.html { redirect_to terms_path, notice: 'term was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
