@@ -1,6 +1,6 @@
 <h1>Evaluation de vos pairs</h1>
 
-    <%= form_for @current, :url => "/rates/save", :period_id => @period.id do %>
+    <%= form_for @current, :url => "save", :period_id => @period.id do %>
     <% @period.all_question.each do |single_question| %>
         <table>
           <th colspan="3">Question : <%= single_question.name %></th>
