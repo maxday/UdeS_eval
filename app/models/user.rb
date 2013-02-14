@@ -69,6 +69,9 @@ class User < ActiveRecord::Base
 
 
   def final?(period)
+     if period.all_question.count == 0
+       return false
+     end
      return self.all_marks_received?(period).count == (self.team?(period.term_id).how_many?(period.term_id) - 1) * period.all_question.count
   end
 
