@@ -5,7 +5,8 @@ class RatesController < ApplicationController
   def index
     @student = current_user
     @current = Mark.new
-    @periods = Period.all
+    @term_ids_where_student_is_registered = Affectation.where(:user_id => @student).pluck(:term_id)
+    @periods = Period.where(:term_id => @term_ids_where_student_is_registered)
     @current = Period.new
   end
 
