@@ -1,7 +1,7 @@
 <h1>Voir les notes</h1>
 
-Vous consulter l'évaluation suivante : <%= @period.fullname %>
-
+Vous consulter l'évaluation suivante : <%= @period.fullname %> <br />
+<%= link_to "Exporter", export_url(@period) %>
 <table>
   <tr>
     <th>Etudiant</th>

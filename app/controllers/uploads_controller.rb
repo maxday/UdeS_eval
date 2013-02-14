@@ -6,6 +6,7 @@ class UploadsController < ApplicationController
   end
 
   def create
+    require 'spreadsheet'
     authorize! :upload, :create
     require 'fileutils'
 

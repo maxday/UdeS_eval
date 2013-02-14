@@ -36,6 +36,7 @@ EvalPP7P8::Application.routes.draw do
     end
   end
   match 'evaluations/:period_id/:user_id' => 'details#index', :as => :detail
+  match 'exports/:id' => 'exports#index', :as => :export
   match 'uploads/upload' => 'uploads#upload', :as => :upload
 
 

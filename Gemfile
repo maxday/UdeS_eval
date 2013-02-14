@@ -38,6 +38,7 @@ gem 'seed-fu'
 gem 'rubyXL'
 gem 'nokogiri'
 gem 'zip'
+gem 'spreadsheet'
 
 # Deploy with Capistrano
 gem 'capistrano'

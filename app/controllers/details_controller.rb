@@ -6,4 +6,8 @@ class DetailsController < ApplicationController
     @student = User.find(params[:user_id])
   end
 
+  def export
+
+  end
+
 end
