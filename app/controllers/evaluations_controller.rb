@@ -9,11 +9,12 @@ class EvaluationsController < ApplicationController
   def show
     authorize! :check, :evaluation
     @period = Period.find(params[:id])
-    @students = User.only_students
 
-    size = Affectation.where(:term_id => @period.term_id, :user_id => @students).count
-    logger.info @students.inspect
-    if size == 0
+    @students = User.only_students
+    @affectation = Affectation.where(:term_id => @period.term_id, :user_id => @students).pluck(:user_id)
+    @students = User.where(:id => @affectation)
+
+    if @students.count == 0
       respond_to do |format|
           format.html { redirect_to evaluations_path, notice: 'Aucun etudiant dans cette session.' }
       end
