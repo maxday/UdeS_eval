@@ -44,7 +44,7 @@ class ExportsController < ApplicationController
     end
 
     time = Time.now.to_formatted_s(:number)
-    @path = Rails.root.to_s + "/public/exports/#{time}-export.xls"
+    @path ="/exports/#{time}-export.xls"
     export_file.write @path
 
   end
