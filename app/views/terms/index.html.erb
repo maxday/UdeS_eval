@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Nom</th>
+    <th>Session courrante ?</th>
     <th></th>
     <th></th>
   </tr>
@@ -10,6 +11,13 @@
 <% @terms.each do |term| %>
   <tr>
     <td><%= term.fullname %></td>
+    <td>
+      <% if term.is_active %>
+        Oui
+      <% else %>
+        Non - <%= link_to "Rendre active", term_activate_path(term) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Editer', edit_term_path(term) %></td>
     <td><%= link_to 'Supprimer', term, confirm: 'Êtes-vous sûr ?', method: :delete %></td>
   </tr>

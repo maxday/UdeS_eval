@@ -6,7 +6,7 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
+    @terms = Term.order(:created_at)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,4 +84,15 @@ class TermsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def activate
+    @term = Term.find(params[:term_id])
+    @term.activate
+
+    respond_to do |format|
+      format.html { redirect_to terms_url }
+      format.json { head :no_content }
+    end
+  end
+
 end

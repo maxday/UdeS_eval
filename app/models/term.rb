@@ -1,5 +1,5 @@
 class Term < ActiveRecord::Base
-  attr_accessible :name, :year_id
+  attr_accessible :name, :year_id, :is_active
 
   belongs_to :years
   has_many :periods
@@ -14,6 +14,11 @@ class Term < ActiveRecord::Base
 
   def fullname
     fullname = "#{Year.find(self.year_id).name} - #{self.name}"
+  end
+
+  def activate
+    Term.update_all(:is_active => false)
+    Term.update(self, :is_active => true)
   end
 
 end
