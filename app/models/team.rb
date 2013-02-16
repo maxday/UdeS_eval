@@ -5,8 +5,9 @@ class Team < ActiveRecord::Base
   has_many :affectations, :through => :users
 
   validates :name,
-            :presence => true,
-            :uniqueness => true
+            :presence => {:message => "Le nom de l'equipe ne peut pas etre vide"},
+            :uniqueness => {:message => "Le nom de l'equipe doit etre unique"}
+
 
   def how_many?(term)
     return Affectation.where(:team_id => self, :team_id => term).count

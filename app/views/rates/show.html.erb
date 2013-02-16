@@ -1,7 +1,8 @@
 <h1>Evaluation de vos pairs</h1>
 
     <%= form_for @current, :url => "save", :period_id => @period.id do %>
-
+    <%=  current_user.fullname %> <br />
+    Completée à <%= current_user.pourcent_completed?(@period) %> %
     <% @period.all_question.each do |single_question| %>
           <div class="question">
           <div class="question_libelle">Question : <%= single_question.name %></div>

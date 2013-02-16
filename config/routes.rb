@@ -10,7 +10,10 @@ EvalPP7P8::Application.routes.draw do
 
   resources :questions
 
-  resources :terms
+  resources :terms do
+    get 'activate'
+    post 'activate'
+  end
 
   resources :teams
 

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -77,5 +77,11 @@ class User < ActiveRecord::Base
 
   scope :only_students, joins(:roles).where("roles.name = ?", "Student")
 
+  def pourcent_completed?(period)
+    nb_members = self.team?(period.term_id).all_members_but_me?(period.term_id, self).count
+    nb_marks =  Mark.where(:period_id => period, :student_from_id => self).count
+    nb_question = period.all_question.count
+    return nb_marks * 100 / (nb_members * nb_question)
+  end
 
 end

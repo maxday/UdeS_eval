@@ -1,5 +1,8 @@
-Bonjour <%=  current_user.username %>,  <br />
-Vous êtes : <%= @role_name %>
+Bonjour <%=  current_user.fullname %>,  <br />
+<%  if current_user.role?(:student) %>
+  Vous êtes dans le projet : <%= current_user.team?(Term.where(:is_active => 1)).name %>  <br />
+<% end %>
+Votre évaluation est complétée à 10%
 <hr />
 
 <%  if current_user.role?(:administrator) or current_user.role?(:supervisor) %>
@@ -21,4 +24,3 @@ Vous êtes : <%= @role_name %>
     </ul>
 <% end %>
 <hr />
-<%= link_to 'Se deconnecter', destroy_user_session_url, :method => :delete %>

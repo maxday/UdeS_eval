@@ -1,2 +1,24 @@
 fr:
-  hello: "Bonjour"
+  devise:
+    failure:
+      already_authenticated: "Vous êtes déjà authentifié !"
+      user:
+        unauthenticated: "Vous devez vous identifier pour accéder à cette page"
+        not_found_in_database: "Echec de l'authentification"
+        invalid: "Utilisateur invalide"
+
+    sessions:
+      signed_in: "Vous êtes authentifié"
+
+
+  simple_form:
+      "yes": 'Oui'
+      "no": 'Non'
+      required:
+        text: 'requis'
+        mark: '*'
+        # You can uncomment the line below if you need to overwrite the whole required html.
+        # When using html, text and mark won't be used.
+        # html: '<abbr title="required">*</abbr>'
+      error_notification:
+        default_message: "Oups... merci de corriger ces petits détails :"
