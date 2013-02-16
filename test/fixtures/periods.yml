@@ -4,15 +4,19 @@ one:
   name: Evaluation par les pairs numéro 1
   term_id: 1
   begin_date:
+  id: 1
 
 two:
   name: Evaluation par les pairs numéro 2
   term_id: 1
+  id: 2
 
 three:
   name: Evaluation par les pairs numéro 1
   term_id: 2
+  id: 3
 
 four:
   name: Evaluation par les pairs numéro 2
   term_id: 2
+  id: 4
