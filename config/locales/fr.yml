@@ -3,13 +3,15 @@ fr:
     failure:
       already_authenticated: "Vous êtes déjà authentifié !"
       user:
-        unauthenticated: "Vous devez vous identifier pour accéder à cette page"
-        not_found_in_database: "Echec de l'authentification"
-        invalid: "Utilisateur invalide"
+        unauthenticated: "Identification requise !"
+        not_found_in_database: "Echec de l'authentification !"
+        invalid: "Utilisateur invalide !"
+
 
     sessions:
-      signed_in: "Vous êtes authentifié"
-
+      signed_in: "Vous êtes authentifié !"
+      user:
+        signed_out: "Vous êtes maintenant déconnecté !"
 
   simple_form:
       "yes": 'Oui'

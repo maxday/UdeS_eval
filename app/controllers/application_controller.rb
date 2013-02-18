@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => "Vous n'avez pas les droits suffisants <br />Action = #{exception.action} sur objet = #{exception.subject.class.name}"
   end
 
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if devise_controller?
+      "login"
+    else
+      "application"
+    end
+  end
 end

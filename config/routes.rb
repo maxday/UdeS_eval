@@ -41,9 +41,10 @@ EvalPP7P8::Application.routes.draw do
   match 'evaluations/:period_id/:user_id' => 'details#index', :as => :detail
   match 'exports/:id' => 'exports#index', :as => :export
   match 'uploads/upload' => 'uploads#upload', :as => :upload
+  match 'home' => 'home#index', :as => :home
 
 
-  root :to => 'home#index'
+  root :to => 'guess#index'
 
   devise_for :users
 

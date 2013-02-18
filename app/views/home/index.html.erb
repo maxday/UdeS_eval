@@ -1,6 +1,7 @@
 Bonjour <%=  current_user.fullname %>,  <br />
 <%  if current_user.role?(:student) %>
-  Vous êtes dans le projet : <%= current_user.team?(Term.where(:is_active => 1)).name %>  <br />
+  Vous êtes dans le projet :   <br />
+  #current_user.team?(Term.where(:is_active => 1)).name
 <% end %>
 Votre évaluation est complétée à 10%
 <hr />

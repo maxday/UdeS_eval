@@ -1,4 +1,4 @@
-<%= form_for @current, :url => "rates/select" do %>
+<%= simple_form_for @current, :url => "rates/select" do %>
     <%= collection_select(:period, :period_id, @periods, :id, :fullname) %>
     <%= submit_tag("Valider") %>
 <% end %>
