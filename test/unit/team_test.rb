@@ -19,13 +19,27 @@ class TeamTest < ActiveSupport::TestCase
 
 
   test "How many method" do
-    first_team = Team.first
-    assert_equal first_team.how_many?(Term.first),  3
+    term = terms(:one)
+    first_team = Team.new(:name => "abc")
+    first_team.save
+    Affectation.update_all(:team_id => nil)
+    few_affectations = Affectation.where(:term_id => term).limit(2)
+    few_affectations.update_all(:team_id => first_team.id)
+    assert_equal first_team.how_many?(term),  2
   end
 
-  test "All member methed" do
-    first_team = Team.first
-    first_term = Term.first
-    assert_equal first_team.how_many?(first_term), first_team.all_members?(first_term).count
+  test "All members" do
+    term = terms(:one)
+    first_team = teams(:one)
+    assert_equal first_team.all_members?(term).count, first_team.how_many?(term)
   end
+
+  test "All members but me" do
+    term = terms(:one)
+    first_team = teams(:one)
+    user = User.find(Affectation.where(:term_id => term, :team_id => first_team).first.user_id)
+    assert_equal first_team.all_members?(term).count-1, first_team.all_members_but_me?(term, user).count
+  end
+
+
 end

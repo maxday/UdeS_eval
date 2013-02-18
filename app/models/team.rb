@@ -10,7 +10,7 @@ class Team < ActiveRecord::Base
 
 
   def how_many?(term)
-    return Affectation.where(:team_id => self, :team_id => term).count
+    return Affectation.where(:team_id => self, :term_id => term).count
   end
 
   def all_members?(term)
