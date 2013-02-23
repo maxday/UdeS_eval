@@ -44,7 +44,17 @@ class RatesController < ApplicationController
 
           mark.value = Entry.find(mark_value).real_value
           mark.save
+        else
+            mark_to_destroy = Mark.where(:student_from_id => current_user,
+                                         :student_to_id => student_id,
+                                         :question_id => question_id,
+                                         :period_id => session[:period_id].id)
+            logger.info mark_to_destroy.inspect
+            if !mark_to_destroy.empty?
+              Mark.destroy(mark_to_destroy)
+            end
         end
+
       end
     end
     redirect_to rate_path(session[:period_id].id)

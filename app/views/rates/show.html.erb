@@ -1,38 +1,60 @@
 <h1>Evaluation de vos pairs</h1>
+<% @other_students = Array.new %>
+<%= form_for @current, :url => "save", :period_id => @period.id do %>
+<%=  current_user.fullname %> <br />
+Completée à <%= current_user.pourcent_completed?(@period) %> % <br /><br />
+<% @period.all_question.each do |single_question| %>
+  <div class="btn-toolbar">
+    <div class="btn btn-inverse"><%= Category.find(single_question.category_id).name %></div>
+    <div class="btn btn-primary">Question : <%= single_question.name %></div>
+  </div>
+  <table class="table table-striped">
+    <% current_user.team?(@period.term_id).all_members_but_me?(@period.term_id, current_user).each do |single_student| %>
+      <td>
+      <%= User.find(single_student.user_id).real_name %>
+      <% @other_students << User.find(single_student.user_id) %>
+      <br />
+      <% default_mark = Mark.where(:period_id => @period,
+                                 :student_to_id => single_student.user_id,
+                                 :student_from_id => current_user,
+                                :question_id => single_question.id).first
+      %>
+      <% if default_mark.nil? %>
+        <%= collection_select("rate[question_ids][#{single_question.id}]",
+                          single_student.user_id,
+                          @available_marks,
+                          :id,
+                          :visible_value,
+                          {:include_blank => 'Choisissez une note :'},
+                          {:class => "compute_avg_#{single_student.user_id}"})
+        %>
+       <% else %>
+         <%= collection_select("rate[question_ids][#{single_question.id}]",
+                          single_student.user_id,
+                          @available_marks,
+                          :id,
+                          :visible_value,
+                          {:include_blank => 'Choisissez une note :', :selected => Entry.where(:period_id => @period,
+                                                    :real_value => default_mark.value).first.id},
+                          {:class => "compute_avg_#{single_student.user_id}"})
+       %>
+       <% end %>
+    </td>
+    <% end %> </table>
+<% end %>
 
-    <%= form_for @current, :url => "save", :period_id => @period.id do %>
-    <%=  current_user.fullname %> <br />
-    Completée à <%= current_user.pourcent_completed?(@period) %> %
-    <% @period.all_question.each do |single_question| %>
-          <div class="question">
-          <div class="question_libelle">Question : <%= single_question.name %></div>
+<table class="table table-striped">
+  <th>Etudiant</th>
+  <th>Moyenne <span class="computed_avg hidden btn btn-warning">Provisoire</span></th>
+  <% @other_students.uniq.each do |single_student| %>
+    <tr>
+      <td><%= single_student.real_name %></td>
+      <td id="avg_<%= single_student.id %>"><%= single_student.average_mark_from_student(current_user,@period) %></td>
+    </tr>
+  <% end %>
+</table>
 
-          <% current_user.team?(@period.term_id).all_members_but_me?(@period.term_id, current_user).each_with_index do |single_student, index| %>
-                <div class="question_student_<%= index%2    %>">
-                  <%= User.find(single_student.user_id).fullname %><br />
-                  <% default_mark = Mark.where(:period_id => @period,
-                                             :student_to_id => single_student.user_id,
-                                             :student_from_id => current_user,
-                                             :question_id => single_question.id).first
-                   if default_mark.nil?
-                     default_mark = ""
-                   else
-                     default_mark = default_mark.value
-                   end
-                %>
 
-                <%= collection_select("rate[question_ids][#{single_question.id}]",
-                                      single_student.user_id,
-                                      @available_marks,
-                                      :id,
-                                      :visible_value,
-                                      {:selected => Entry.where(:period_id => @period,
-                                                                :real_value => default_mark).first.id}) %>
-
-               </div>
-        <% end %>
-          </div>
-    <% end %>
-    <%= submit_tag("Valider") %>
+<%= submit_tag("Sauvegarder votre évaluation", :class => "btn btn-success") %>
 <% end %>
 

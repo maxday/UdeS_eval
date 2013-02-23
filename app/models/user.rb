@@ -94,4 +94,10 @@ class User < ActiveRecord::Base
     return self.fullname.gsub(",","")
   end
 
+  def average_mark_from_student(user, period)
+    all_marks = Mark.where(:student_from_id => user, :student_to_id => self, :period_id => period)
+    num = all_marks.sum :value
+    return (num*1.00)/period.all_question.count
+  end
+
 end
