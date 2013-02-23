@@ -1,8 +1,11 @@
 <%= link_to "Accueil", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
+
+
+<% if user_signed_in? %>
+    <ul class="nav">
       <li>
         <%= link_to('Se déconnecter', destroy_user_session_path, :method=>'delete') %>
       </li>
-  <% end %>
-</ul>
+    </ul>
+    <p class="navbar-text pull-right"><%= current_user.real_name %></p>
+<% end %>

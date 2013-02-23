@@ -1,6 +1,11 @@
-<h1>Liste des périodes</h1>
+<h1>Liste des périodes </h1>
 
-<table>
+<div class="btn-toolbar">
+  <%= link_to 'Nouvelle période', new_period_path, :class => "btn btn-primary" %>
+  <%= link_to 'Retour', home_path, :class => "btn btn-inverse" %>
+</div>
+
+<table class="table table-striped">
   <tr>
     <th>Nom</th>
     <th>Date de début</th>
@@ -16,12 +21,8 @@
         <td><%= period.begin_date %></td>
         <td><%= period.due_date %></td>
         <td><%= Term.find(period.term_id).fullname %></td>
-        <td><%= link_to 'Editer', edit_period_path(period) %></td>
-        <td><%= link_to 'Supprimer', period, method: :delete, data: { confirm: 'Etes-vous sur ?' } %></td>
+        <td><%= link_to 'Editer', edit_period_path(period), :class => "btn btn-info" %></td>
+        <td><%= link_to 'Supprimer', period, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
       </tr>
   <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Nouvelle période', new_period_path %>

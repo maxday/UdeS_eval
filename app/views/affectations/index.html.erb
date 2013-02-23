@@ -1,6 +1,11 @@
 <h1>Liste des étudiants</h1>
 
-<table>
+<div class="btn-toolbar">
+  <%= link_to 'Nouvelle affectation', new_affectation_path, :class => "btn btn-primary" %>
+  <%= link_to 'Retour', home_path, :class => "btn btn-inverse" %>
+</div>
+
+<table class="table table-striped">
   <tr>
     <th>Cip</th>
     <th>Nom</th>
@@ -20,12 +25,8 @@
     <td><%= Team.find(affectation.team_id).name %></td>
     <td><%= Term.find(affectation.term_id).name %></td>
     <td><%= Year.find(affectation.term_id).name %></td>
-    <td><%= link_to 'Editer', edit_affectation_path(affectation) %></td>
-    <td><%= link_to 'Supprimer', affectation, confirm: 'Etes-vous sur?', method: :delete %></td>
+    <td><%= link_to 'Editer', edit_affectation_path(affectation), :class => "btn btn-info" %></td>
+    <td><%= link_to 'Supprimer', affectation, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Nouvelle affectation', new_affectation_path %>

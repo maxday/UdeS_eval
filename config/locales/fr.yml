@@ -24,3 +24,12 @@ fr:
         # html: '<abbr title="required">*</abbr>'
       error_notification:
         default_message: "Oups... merci de corriger ces petits détails :"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "L'adresse n'a pas été trouvée"
+              blank: "Vous devez spécifier une adresse mail"

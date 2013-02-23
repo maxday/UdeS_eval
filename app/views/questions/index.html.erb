@@ -1,6 +1,11 @@
 <h1>Liste des questions</h1>
 
-<table>
+<div class="btn-toolbar">
+  <%= link_to 'Nouvelle question', new_question_path, :class => "btn btn-primary" %>
+  <%= link_to 'Retour', home_path, :class => "btn btn-inverse" %>
+</div>
+
+<table class="table table-striped">
   <tr>
     <th>Nom</th>
     <th>Catégorie</th>
@@ -14,12 +19,8 @@
     <td><%= question.name %></td>
     <td><%= Category.find(question.category_id).name %></td>
     <td><%= Term.find(Period.find(question.period_id).term_id).fullname %></td>
-    <td><%= link_to 'Editer', edit_question_path(question) %></td>
-    <td><%= link_to 'Supprimer', question, confirm: 'Etes-vous sûr ?', method: :delete %></td>
+    <td><%= link_to 'Editer', edit_question_path(question), :class => "btn btn-info" %></td>
+    <td><%= link_to 'Supprimer', question, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Nouvelle question', new_question_path %>

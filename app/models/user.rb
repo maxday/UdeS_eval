@@ -90,4 +90,8 @@ class User < ActiveRecord::Base
     return nb_marks * 100 / (nb_members * nb_question)
   end
 
+  def real_name
+    return self.fullname.gsub(",","")
+  end
+
 end

@@ -1,6 +1,11 @@
 <h1>Liste des sessions</h1>
 
-<table>
+<div class="btn-toolbar">
+  <%= link_to 'Nouvelle session', new_term_path, :class => "btn btn-primary" %>
+  <%= link_to 'Retour', home_path, :class => "btn btn-inverse" %>
+</div>
+
+<table class="table table-striped">
   <tr>
     <th>Nom</th>
     <th>Session courrante ?</th>
@@ -15,15 +20,11 @@
       <% if term.is_active %>
         Oui
       <% else %>
-        Non - <%= link_to "Rendre active", term_activate_path(term) %>
+        Non - <%= link_to "Rendre active", term_activate_path(term), :class => "btn btn-success" %>
       <% end %>
     </td>
-    <td><%= link_to 'Editer', edit_term_path(term) %></td>
-    <td><%= link_to 'Supprimer', term, confirm: 'Êtes-vous sûr ?', method: :delete %></td>
+    <td><%= link_to 'Editer', edit_term_path(term), :class => "btn btn-info" %></td>
+    <td><%= link_to 'Supprimer', term, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Nouvelle session', new_term_path %>

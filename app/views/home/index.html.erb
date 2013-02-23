@@ -1,27 +1,26 @@
-Bonjour <%=  current_user.fullname %>,  <br />
+Bonjour <%=  current_user.real_name %>  <br />
 <%  if current_user.role?(:student) %>
   Vous êtes dans le projet :  <%= current_user.team?(Term.where(:is_active => true)).name %>  <br />
   Votre évaluation est complétée à 10%
 <% end %>
 
-<hr />
+<br />
 
 <%  if current_user.role?(:administrator) or current_user.role?(:supervisor) %>
-    <ul>
-      <li><%=  link_to 'Gérer les équipes', teams_path %></li>
-      <li><%=  link_to 'Gérer les sessions', terms_path %></li>
-      <li><%=  link_to 'Gérer les années', years_path %></li>
-      <li><%=  link_to 'Gérer les périodes', periods_path %></li>
-      <li><%=  link_to 'Gérer les élèves', affectations_path %></li>
-      <li><%=  link_to 'Gérer les questions', questions_path %></li>
-      <li><%=  link_to 'Gérer les catégories', categories_path %></li>
-      <li><%=  link_to 'Gérer les évaluations', evaluations_path %></li>
-      <li><%=  link_to 'Envoyer un fichier', uploads_path %></li>
-    </ul>
+    <table class="table table-striped">
+      <td><%=  link_to 'Gérer les équipes', teams_path, :class => "btn btn-primary" %></td>
+      <td><%=  link_to 'Gérer les sessions', terms_path, :class => "btn btn-success" %></td>
+      <td><%=  link_to 'Gérer les années', years_path, :class => "btn btn-primary" %></td>
+      <td><%=  link_to 'Gérer les périodes', periods_path, :class => "btn btn-success" %></td>
+      <td><%=  link_to 'Gérer les étudiants', affectations_path, :class => "btn btn-primary" %></td>
+      <td><%=  link_to 'Gérer les questions', questions_path, :class => "btn btn-success" %></td>
+      <td><%=  link_to 'Gérer les catégories', categories_path, :class => "btn btn-primary" %></td>
+      <td><%=  link_to 'Gérer les évaluations', evaluations_path, :class => "btn btn-success" %></td>
+      <td><%=  link_to 'Envoyer un fichier', uploads_path, :class => "btn btn-primary" %></td>
+    </table>
 <% end %>
 <%  if current_user.role?(:student) %>
     <ul>
-      <li><%=  link_to 'Evaluez !', rates_path %></li>
+      <td><%=  link_to 'Evaluez !', rates_path %></td>
     </ul>
 <% end %>
-<hr />

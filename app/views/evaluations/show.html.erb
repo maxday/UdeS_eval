@@ -1,15 +1,20 @@
 <h1>Voir les notes</h1>
 
 Vous consulter l'évaluation suivante : <%= @period.fullname %> <br />
-<%= link_to "Exporter", export_url(@period) %>
-<table>
+
+<div class="btn-toolbar">
+  <%= link_to "Exporter", export_url(@period), :class => "btn btn-primary" %>
+  <%= link_to 'Retour', home_path, :class => "btn btn-inverse" %>
+</div>
+
+<table class="table table-striped">
   <tr>
     <th>Etudiant</th>
     <th>Equipe</th>
     <th>Nombre de notes données</th>
     <th>Nombre de notes reçues</th>
-    <th>Note la plus haute</th>
     <th>Note la plus basse</th>
+    <th>Note la plus haute</th>
     <th>Moyenne réelle</th>
     <th>Moyenne adoucie</th>
     <th>Détail</th>
@@ -29,7 +34,7 @@ Vous consulter l'évaluation suivante : <%= @period.fullname %> <br />
         <% else %>
             <td class="warning"><%= avg %></td>
         <% end %>
-        <td><%= link_to "Détails", detail_url(@period, single_student) %></td>
+        <td><%= link_to "Détails", detail_url(@period, single_student), :class => "btn btn-info" %></td>
       </tr>
   <% end %>
 </table>
