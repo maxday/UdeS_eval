@@ -16,7 +16,7 @@ class EvaluationsController < ApplicationController
 
     if @students.count == 0
       respond_to do |format|
-          format.html { redirect_to evaluations_path, notice: 'Aucun etudiant dans cette session.' }
+          format.html { redirect_to evaluations_path, alert: 'Aucun etudiant dans cette session.' }
       end
     end
 

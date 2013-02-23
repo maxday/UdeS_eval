@@ -57,7 +57,9 @@ class RatesController < ApplicationController
 
       end
     end
-    redirect_to rate_path(session[:period_id].id)
+    respond_to do |format|
+      format.html { redirect_to rate_path(session[:period_id].id), notice: 'Evaluation sauvegardee.' }
+    end
   end
 
   def select
