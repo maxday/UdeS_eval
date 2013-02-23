@@ -81,6 +81,12 @@ class User < ActiveRecord::Base
     nb_members = self.team?(period.term_id).all_members_but_me?(period.term_id, self).count
     nb_marks =  Mark.where(:period_id => period, :student_from_id => self).count
     nb_question = period.all_question.count
+
+    #avoid divided by 0 error
+    if nb_members * nb_question == 0
+      return 0
+    end
+
     return nb_marks * 100 / (nb_members * nb_question)
   end
 
