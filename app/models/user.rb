@@ -100,4 +100,5 @@ class User < ActiveRecord::Base
     return (num*1.00)/period.all_question.count
   end
 
+  default_scope :order => 'users.matricule'
 end

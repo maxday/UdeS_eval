@@ -17,6 +17,9 @@ class Period < ActiveRecord::Base
   def all_question
     return Question.where(:period_id => self)
   end
+
+  default_scope :order => "due_date DESC"
+
 end
 
 

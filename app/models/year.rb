@@ -8,5 +8,6 @@ class Year < ActiveRecord::Base
             :uniqueness => true
 
 
+  default_scope :order => "name DESC"
 
 end
