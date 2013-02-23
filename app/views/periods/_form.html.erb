@@ -35,10 +35,13 @@
     </div>
     <div class="field">
       Valeurs : <br />
-      <%= text_field "entries[0]", "visible" %>
-      <%= text_field "entries[0]", "real" %><br />
-      <%= text_field "entries[1]", "visible" %>
-      <%= text_field "entries[1]", "real" %><br />
+      <span class="entryFields">
+        <%= text_field "entries[0]", "visible" %>
+        <%= text_field "entries[0]", "real" %><br />
+        <%= text_field "entries[1]", "visible" %>
+        <%= text_field "entries[1]", "real" %>
+      </span>
+      <a href="#" id="moreEntryField"> + plus </a><br />
     </div>
     <div class="actions">
       <%= f.submit "Valider"%>

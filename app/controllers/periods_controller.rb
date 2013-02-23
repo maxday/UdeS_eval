@@ -46,22 +46,17 @@ class PeriodsController < ApplicationController
   def create
     @period = Period.new(params[:period])
 
-    @entries = params[:entries]
-
-
-    logger.info "kikoo"
-    @entries.each do |key, value|
-      entry = Entry.new(:period_id => @period, :visible_value => value["visible"], :real_value => value["real"])
-
-      logger.info entry.inspect
-      entry.save
-    end
-
-
-
-
     respond_to do |format|
       if @period.save
+
+        @entries = params[:entries]
+        @entries.each do |key, value|
+          if !value["visible"].empty? && !value["real"].empty?
+            entry = Entry.new(:period_id => @period.id, :visible_value => value["visible"], :real_value => value["real"])
+            entry.save
+          end
+        end
+
         format.html { redirect_to periods_path, notice: 'Period was successfully created.' }
         format.json { render json: @period, status: :created, location: @period }
       else
