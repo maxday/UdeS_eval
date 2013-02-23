@@ -1,9 +1,9 @@
 Bonjour <%=  current_user.fullname %>,  <br />
 <%  if current_user.role?(:student) %>
-  Vous êtes dans le projet :   <br />
-  #current_user.team?(Term.where(:is_active => 1)).name
+  Vous êtes dans le projet :  <%= current_user.team?(Term.where(:is_active => true)).name %>  <br />
+  Votre évaluation est complétée à 10%
 <% end %>
-Votre évaluation est complétée à 10%
+
 <hr />
 
 <%  if current_user.role?(:administrator) or current_user.role?(:supervisor) %>

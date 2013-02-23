@@ -15,7 +15,7 @@
         <td><%= period.name %></td>
         <td><%= period.begin_date %></td>
         <td><%= period.due_date %></td>
-        <td><%= Term.find(period.term_id).name %></td>
+        <td><%= Term.find(period.term_id).fullname %></td>
         <td><%= link_to 'Editer', edit_period_path(period) %></td>
         <td><%= link_to 'Supprimer', period, method: :delete, data: { confirm: 'Etes-vous sur ?' } %></td>
       </tr>
