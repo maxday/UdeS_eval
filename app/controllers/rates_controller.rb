@@ -14,6 +14,7 @@ class RatesController < ApplicationController
     @period = Period.find(params[:id])
     session[:period_id] = @period
     @current = Mark.new
+    @available_marks = Entry.where(:period_id => @period)
   end
 
   def save
@@ -35,7 +36,7 @@ class RatesController < ApplicationController
                    :period_id => session[:period_id].id,
           ).first_or_initialize
 
-          mark.value = mark_value
+          mark.value = Entry.find(mark_value).real_value
           mark.save
         end
       end

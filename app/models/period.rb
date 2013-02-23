@@ -6,6 +6,7 @@ class Period < ActiveRecord::Base
 
   belongs_to :terms
   has_many :marks
+  has_many :entries
 
 
   def fullname

@@ -20,7 +20,15 @@
                      default_mark = default_mark.value
                    end
                 %>
-                <%= text_field "rate[question_ids][#{single_question.id}]", single_student.user_id, :value => default_mark, :size => 3, :class => "text_field_center" %>
+
+                <%= collection_select("rate[question_ids][#{single_question.id}]",
+                                      single_student.user_id,
+                                      @available_marks,
+                                      :id,
+                                      :visible_value,
+                                      {:selected => Entry.where(:period_id => @period,
+                                                                :real_value => default_mark).first.id}) %>
+
                </div>
         <% end %>
           </div>
