@@ -9,7 +9,7 @@
   <tr>
     <th>Nom</th>
     <th>Catégorie</th>
-    <th>Session</th>
+    <th>Periode</th>
     <th></th>
     <th></th>
   </tr>
@@ -18,7 +18,7 @@
   <tr>
     <td><%= question.name %></td>
     <td><%= Category.find(question.category_id).name %></td>
-    <td><%= Term.find(Period.find(question.period_id).term_id).fullname %></td>
+    <td><%= Period.find(question.period_id).fullname %></td>
     <td><%= link_to 'Editer', edit_question_path(question), :class => "btn btn-info" %></td>
     <td><%= link_to 'Supprimer', question, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
   </tr>
