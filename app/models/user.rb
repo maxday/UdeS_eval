@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   has_many :teams
   has_many :affectations, :through => :teams
 
+  # Security issue (modify current password)
+  attr_accessor :current_password
+  attr_accessible :current_password
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

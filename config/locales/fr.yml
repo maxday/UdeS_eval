@@ -7,6 +7,9 @@ fr:
         not_found_in_database: "Echec de l'authentification !"
         invalid: "Utilisateur invalide !"
 
+    registrations:
+      user:
+          updated: "Mot de passe changé avec succès !"
 
     sessions:
       signed_in: "Vous êtes authentifié !"
