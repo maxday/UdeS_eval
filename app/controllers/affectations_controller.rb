@@ -7,11 +7,11 @@ class AffectationsController < ApplicationController
   # GET /affectations
   # GET /affectations.json
   def index
-    @affectations = Affectation.all
-
+    @users = User.only_students
+    @current_term = Term.where(:is_active => true)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @affectations }
+      format.json { render json: @users }
     end
   end
 

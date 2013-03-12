@@ -17,16 +17,20 @@
     <th></th>
   </tr>
 
-<% @affectations.each do |affectation| %>
+<% @users.each do |single_user| %>
   <tr>
-    <td><%= User.find(affectation.user_id).username %></td>
-    <td><%= User.find(affectation.user_id).fullname %></td>
-    <td><%= User.find(affectation.user_id).matricule %></td>
-    <td><%= Team.find(affectation.team_id).name %></td>
-    <td><%= Term.find(affectation.term_id).name %></td>
-    <td><%= Year.find(affectation.term_id).name %></td>
-    <td><%= link_to 'Editer', edit_affectation_path(affectation), :class => "btn btn-info" %></td>
-    <td><%= link_to 'Supprimer', affectation, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
+    <td><%= single_user.username %></td>
+    <td><%= single_user.fullname %></td>
+    <td><%= single_user.matricule %></td>
+    <td>
+      <% Affectation.where(:user_id => single_user, :term_id => @current_term).each do |single_affectation| %>
+        [<%= Team.find(single_affectation.team_id).name %>]
+      <% end %>
+    </td>
+    <td><%= single_user.fullname %></td>
+    <td><%= single_user.fullname %></td>
+    <td><%= link_to 'Editer', "#", :class => "btn btn-info" %></td>
+    <td><%= link_to 'Supprimer', "#", :class => "btn btn-danger" %></td>
   </tr>
 <% end %>
 </table>
