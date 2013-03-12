@@ -1,6 +1,7 @@
 class Team < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :studentset_id
 
+  belongs_to :studenset
   has_many :users
   has_many :affectations, :through => :users
 

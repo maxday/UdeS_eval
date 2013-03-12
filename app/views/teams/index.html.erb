@@ -8,6 +8,7 @@
 <table class="table table-striped">
   <tr>
     <th>Nom</th>
+    <th>Groupe</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,6 +16,7 @@
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.name %></td>
+    <td><%= Studentset.find(team.studentset_id).name %></td>
     <td><%= link_to 'Editer', edit_team_path(team), :class => "btn btn-info" %></td>
     <td><%= link_to 'Supprimer', team, confirm: 'Êtes-vous sûr ?', method: :delete, :class => "btn btn-danger" %></td>
   </tr>

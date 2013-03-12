@@ -1,0 +1,22 @@
+<h1>Liste des groupes</h1>
+
+<div class="btn-toolbar">
+  <%= link_to 'Nouveau groupe', new_studentset_path, :class => "btn btn-primary" %>
+  <%= link_to 'Retour', home_path, :class => "btn btn-inverse" %>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Nom</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @studentsets.each do |studentset| %>
+  <tr>
+    <td><%= studentset.name %></td>
+    <td><%= link_to 'Editer', edit_studentset_path(studentset), :class => "btn btn-info" %></td>
+    <td><%= link_to 'Supprimer', studentset, confirm: 'Êtes-vous sûr ?', method: :delete, :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>

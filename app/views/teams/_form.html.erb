@@ -3,4 +3,8 @@
   <%= display_base_errors @team %>
   <%= f.input :name, :label => "Nom de l'equipe" %>
   <%= f.button :submit, "Valider" %>
+    <div class="field">
+      Gropue : <br />
+      <%= f.collection_select :studentset_id, Studentset.all, :id, :name %>
+    </div>
 <% end %>
