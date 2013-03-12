@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312142533) do
+ActiveRecord::Schema.define(:version => 20130312150054) do
 
   create_table "affectations", :force => true do |t|
     t.integer  "user_id"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(:version => 20130312142533) do
   end
 
   create_table "entries", :force => true do |t|
-    t.integer  "period_id"
     t.string   "visible_value"
     t.integer  "real_value"
     t.datetime "created_at",     :null => false
@@ -62,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20130312142533) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
-    t.integer  "period_id"
   end
 
   create_table "questionsets", :force => true do |t|
