@@ -10,9 +10,8 @@
     <th>Cip</th>
     <th>Nom</th>
     <th>Matricule</th>
-    <th>Equipe</th>
+    <th>Equipe(s)</th>
     <th>Session</th>
-    <th>Année</th>
     <th></th>
     <th></th>
   </tr>
@@ -27,8 +26,7 @@
         [<%= Team.find(single_affectation.team_id).name %>]
       <% end %>
     </td>
-    <td><%= single_user.fullname %></td>
-    <td><%= single_user.fullname %></td>
+    <td><%= Term.find(@current_term).fullname %></td>
     <td><%= link_to 'Editer', "#", :class => "btn btn-info" %></td>
     <td><%= link_to 'Supprimer', "#", :class => "btn btn-danger" %></td>
   </tr>
