@@ -9,4 +9,9 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => [:name, :questionset_id]
 
   default_scope :order => "name"
+
+  def fullname
+    set = Questionset.find(self.questionset_id)
+    fullname = "#{self.name} - #{set.name}"
+  end
 end

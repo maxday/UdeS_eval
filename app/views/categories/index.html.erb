@@ -9,7 +9,7 @@
   <tr>
     <th>Nom</th>
     <th>Nombre de questions</th>
-    <th></th>
+    <th>Set</th>
     <th></th>
   </tr>
 
@@ -17,6 +17,7 @@
   <tr>
     <td><%= category.name %></td>
     <td><%= category.questions.count %></td>
+    <td><%= Questionset.find(category.questionset_id).name %></td>
     <td><%= link_to 'Editer', edit_category_path(category), :class => "btn btn-info" %></td>
     <td><%= link_to 'Supprimer', category, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
   </tr>

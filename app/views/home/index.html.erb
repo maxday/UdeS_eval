@@ -16,6 +16,8 @@ Bonjour <%=  current_user.real_name %>  <br />
       <td><%=  link_to 'Gérer les questions', questions_path, :class => "btn btn-success" %></td>
       <td><%=  link_to 'Gérer les catégories', categories_path, :class => "btn btn-primary" %></td>
       <td><%=  link_to 'Gérer les évaluations', evaluations_path, :class => "btn btn-success" %></td>
+      <td><%=  link_to 'Gérer les groupes', studentsets_path, :class => "btn btn-primary" %></td>
+      <td><%=  link_to 'Gérer les sets de questions', questionsets_path, :class => "btn btn-success" %></td>
       <td><%=  link_to 'Envoyer un fichier', uploads_path, :class => "btn btn-primary" %></td>
     </table>
 <% end %>
