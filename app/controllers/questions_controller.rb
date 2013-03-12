@@ -14,6 +14,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+
+  def upload
+
+  end
+
   # GET /questions/1
   # GET /questions/1.json
   def show

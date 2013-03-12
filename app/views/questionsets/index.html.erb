@@ -1,0 +1,30 @@
+<h1>Liste des set de questions</h1>
+
+<div class="btn-toolbar">
+  <%= link_to 'Nouveau set', new_question_path, :class => "btn btn-primary" %>
+  <%= link_to 'Retour', home_path, :class => "btn btn-inverse" %>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Nom du set</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questionsets.each do |questionset| %>
+  <tr>
+    <td><%= questionset.name %></td>
+    <td><%= link_to 'Edit', edit_questionset_path(questionset), :class => "btn btn-info" %></td>
+    <td><%= link_to 'Destroy', questionset, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+<%= form_for :file_upload, :html => {:multipart => true} do |f| %>
+    <%= f.file_field :eval %>
+    <%= f.submit "Upload" %>
+<% end %>

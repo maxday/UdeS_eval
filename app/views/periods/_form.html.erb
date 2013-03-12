@@ -33,16 +33,12 @@
       Session : <br />
       <%= f.collection_select :term_id, Term.all, :id, :fullname %>
     </div>
+
     <div class="field">
-      Valeurs : <br />
-      <span class="entryFields">
-        <%= text_field "entries[0]", "visible" %>
-        <%= text_field "entries[0]", "real" %><br />
-        <%= text_field "entries[1]", "visible" %>
-        <%= text_field "entries[1]", "real" %>
-      </span>
-      <a href="#" id="moreEntryField"> + plus </a><br />
+      Set de questions  : <br />
+      <%= f.collection_select :questionset_id, Questionset.all, :id, :name %>
     </div>
+
     <div class="actions">
       <%= f.submit "Valider"%>
     </div>

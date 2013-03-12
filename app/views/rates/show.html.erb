@@ -34,7 +34,7 @@ Completée à <%= current_user.pourcent_completed?(@period) %> % <br /><br />
                           @available_marks,
                           :id,
                           :visible_value,
-                          {:include_blank => 'Choisissez une note :', :selected => Entry.where(:period_id => @period,
+                          {:include_blank => 'Choisissez une note :', :selected => Entry.where(:questionset_id => @period.questionset_id,
                                                     :real_value => default_mark.value).first.id},
                           {:class => "compute_avg_#{single_student.user_id}"})
        %>

@@ -14,7 +14,7 @@ class RatesController < ApplicationController
     @period = Period.find(params[:id])
     session[:period_id] = @period
     @current = Mark.new
-    @available_marks = Entry.where(:period_id => @period)
+    @available_marks = Entry.where(:questionset_id => @period.questionset_id)
 
     if @period.all_question.count == 0 || @available_marks.count == 0
       redirect_to home_path, alert: "L'evaluation n'est pas encore disponible"

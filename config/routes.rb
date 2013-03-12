@@ -1,5 +1,7 @@
 EvalPP7P8::Application.routes.draw do
 
+  resources :questionsets
+
   resources :entries
 
   resources :categories
@@ -11,6 +13,7 @@ EvalPP7P8::Application.routes.draw do
   resources :years
 
   resources :questions
+
 
   resources :terms do
     get 'activate'
@@ -44,6 +47,7 @@ EvalPP7P8::Application.routes.draw do
   match 'exports/:id' => 'exports#index', :as => :export
   match 'uploads/upload' => 'uploads#upload', :as => :upload
   match 'home' => 'home#index', :as => :home
+
 
 
   root :to => 'guess#index'

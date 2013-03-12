@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218204334) do
+ActiveRecord::Schema.define(:version => 20130312142533) do
 
   create_table "affectations", :force => true do |t|
     t.integer  "user_id"
@@ -23,16 +23,18 @@ ActiveRecord::Schema.define(:version => 20130218204334) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "questionset_id"
   end
 
   create_table "entries", :force => true do |t|
     t.integer  "period_id"
     t.string   "visible_value"
     t.integer  "real_value"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "questionset_id"
   end
 
   create_table "marks", :force => true do |t|
@@ -50,8 +52,9 @@ ActiveRecord::Schema.define(:version => 20130218204334) do
     t.integer  "term_id"
     t.date     "begin_date"
     t.date     "due_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "questionset_id"
   end
 
   create_table "questions", :force => true do |t|
@@ -60,6 +63,12 @@ ActiveRecord::Schema.define(:version => 20130218204334) do
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
     t.integer  "period_id"
+  end
+
+  create_table "questionsets", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|

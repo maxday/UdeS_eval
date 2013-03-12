@@ -11,6 +11,7 @@
     <th>Date de début</th>
     <th>Date de fin</th>
     <th>Session</th>
+    <th>Set de questions</th>
     <th></th>
     <th></th>
   </tr>
@@ -21,6 +22,7 @@
         <td><%= period.begin_date %></td>
         <td><%= period.due_date %></td>
         <td><%= Term.find(period.term_id).fullname %></td>
+        <td><%= Questionset.find(period.questionset_id).name %></td>
         <td><%= link_to 'Editer', edit_period_path(period), :class => "btn btn-info" %></td>
         <td><%= link_to 'Supprimer', period, method: :delete, data: { confirm: 'Etes-vous sur ?' }, :class => "btn btn-danger" %></td>
       </tr>

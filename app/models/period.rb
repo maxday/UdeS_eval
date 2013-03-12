@@ -1,5 +1,5 @@
 class Period < ActiveRecord::Base
-  attr_accessible :name, :term_id, :begin_date, :due_date
+  attr_accessible :name, :term_id, :begin_date, :due_date, :questionset_id
 
   validates :name, :term_id,
             :presence => true
@@ -15,7 +15,8 @@ class Period < ActiveRecord::Base
   end
 
   def all_question
-    return Question.where(:period_id => self)
+    logger.info "ici"
+    return Question.where(:category_id => Category.where(:questionset_id => self.questionset_id))
   end
 
   default_scope :order => "due_date DESC"
