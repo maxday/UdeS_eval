@@ -39,6 +39,7 @@ class UploadsController < ApplicationController
       fullname = data["Nom"][line]
       email = data["Courriel"][line]
       team = data["Team"][line]
+      group = data["Groupe"][line]
       term = data["Session"][line]
       year = data["Année"][line]
 
@@ -64,10 +65,21 @@ class UploadsController < ApplicationController
         end
       end
 
+      #group check
+      if !checkGroupExists?(group)
+        @errors.push "#{group} n'existait pas"
+        new_group = Studentset.new(:name => group)
+        if new_group.save
+          @infos.push "Groupe #{new_group.name} est ajoute a la base"
+        else
+          is_error = true
+        end
+      end
+
       #team check
       if !checkTeamExists?(team)
         @errors.push "#{team} n'existait pas"
-        new_team = Team.new(:name => team)
+        new_team = Team.new(:name => team, :studentset_id => Studentset.where(:name => group).first.id)
         if new_team.save
           @infos.push "Equipe #{new_team.name} est ajoutee a la base"
         else
@@ -120,6 +132,10 @@ class UploadsController < ApplicationController
 
   def checkTermExists?(term, year)
     return Term.where(:name => term, :year_id => Year.where(:name => year)).count == 1
+  end
+
+  def checkGroupExists?(group)
+    return Studentset.where(:name => group).count == 1
   end
 
   def create_user_from_excel(username, email, matricule, fullname)
